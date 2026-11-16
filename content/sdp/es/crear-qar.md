@@ -5,7 +5,7 @@ tags:
   - herramientas
 ---
 
-prev > [[sdp/es/instalacion-quartus|Ayuda: instalación de Quartus]]
+prev > [[instalacion-quartus|Ayuda: instalación de Quartus]]
 
 Cuando se trabaja con una herramienta de diseño electrónico como Quartus, a menudo hay que copiar el trabajo, ya sea para compartirlo o para continuarlo en otro ordenador. Como Quartus trabaja con proyectos, lo primero que se nos ocurre es copiar toda la carpeta del proyecto o comprimirla.
 
@@ -33,4 +33,4 @@ Conviene desempaquetar el **.QAR** y abrirlo en Quartus para comprobar que su co
 > [!danger] No lo desempaquetes en la carpeta del proyecto original
 > El proyecto podría corromperse. Copia el **.QAR** a otra carpeta y haz doble clic sobre él: Quartus se abrirá, desempaquetará el proyecto en una carpeta llamada `<nombre_proyecto>_restored` y lo abrirá.
 
-next > [[sdp/es/proyecto1-juego-luces|Proyecto 1: Diseño de un juego de luces]]
+next > [[proyecto1-juego-luces|Proyecto 1: Diseño de un juego de luces]]

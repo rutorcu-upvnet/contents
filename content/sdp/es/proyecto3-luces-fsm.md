@@ -6,7 +6,7 @@ tags:
   - fsm
 ---
 
-prev > [[sdp/es/proyecto2-controlador-video|Proyecto 2: Diseño de un controlador de vídeo]]
+prev > [[proyecto2-controlador-video|Proyecto 2: Diseño de un controlador de vídeo]]
 
 <link rel="stylesheet" href="../../static/step-navigation.css" />
 
@@ -16,7 +16,7 @@ prev > [[sdp/es/proyecto2-controlador-video|Proyecto 2: Diseño de un controlado
 
 ## Introducción
 
-En este proyecto se rediseña el juego de luces del [[sdp/es/proyecto1-juego-luces|Proyecto 1]] utilizando **máquinas de estados**, y se le añade una nueva función de control de velocidad mediante los botones pulsadores de la placa.
+En este proyecto se rediseña el juego de luces del [[proyecto1-juego-luces|Proyecto 1]] utilizando **máquinas de estados**, y se le añade una nueva función de control de velocidad mediante los botones pulsadores de la placa.
 
 ### Objetivos
 
@@ -64,7 +64,7 @@ El bloque **FSM_lights** es una máquina de estados de **Moore** que hace el pap
 Se añade también un contador (**counter**) que actúa como divisor de frecuencia; puede utilizarse el mismo contador de los proyectos anteriores. Para la prueba en placa se usa un módulo de **5 000 000**, de modo que la señal TC tenga una frecuencia de **10 Hz**.
 
 > [!question]- ¿Cuántos bits necesita el contador para un módulo de 5 000 000?
->> [!todo] 23 bits, ya que 2²² = 4 194 304 < 5 000 000 ≤ 2²³ = 8 388 608. Con la anchura calculada mediante `$clog2` (ver el [[sdp/es/proyecto1-juego-luces|Proyecto 1]]) no hace falta calcularlo a mano.
+>> [!todo] 23 bits, ya que 2²² = 4 194 304 < 5 000 000 ≤ 2²³ = 8 388 608. Con la anchura calculada mediante `$clog2` (ver el [[proyecto1-juego-luces|Proyecto 1]]) no hace falta calcularlo a mano.
 
 Describe el diseño en Verilog y compílalo.
 
@@ -168,4 +168,4 @@ Prueba también el diseño en la placa. En este caso, conecta la salida **COUNT*
 
 </div>
 
-next > [[sdp/es/proyecto4-pantalla-tactil|Proyecto 4: Diseño de un interfaz para pantalla táctil]]
+next > [[proyecto4-pantalla-tactil|Proyecto 4: Diseño de un interfaz para pantalla táctil]]

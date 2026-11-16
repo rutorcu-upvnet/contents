@@ -6,7 +6,7 @@ tags:
   - sequential
 ---
 
-prev > [[sdp/en/qar-archive|Help: creating QAR files]]
+prev > [[qar-archive|Help: creating QAR files]]
 
 <link rel="stylesheet" href="../../static/step-navigation.css" />
 
@@ -199,4 +199,4 @@ Remember that after assigning the pins you must compile the design again before 
 
 </div>
 
-next > [[sdp/en/project2-video-controller|Project 2: Design of a video controller]]
+next > [[project2-video-controller|Project 2: Design of a video controller]]

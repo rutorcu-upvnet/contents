@@ -5,7 +5,7 @@ tags:
   - tools
 ---
 
-prev > [[sdp/en/quartus-installation|Help: installing Quartus]]
+prev > [[quartus-installation|Help: installing Quartus]]
 
 When working with an electronic design tool such as Quartus, you often need to copy your work, either to share it with someone or to continue on another computer. Since Quartus works with projects, the obvious approach is to copy the whole project folder or compress it.
 
@@ -33,4 +33,4 @@ It is a good idea to unpack the **.QAR** and open it in Quartus to check that it
 > [!danger] Do not unpack it in the original project folder
 > The project could become corrupted. Copy the **.QAR** to another folder and double-click it: Quartus will open, unpack the project into a folder called `<project_name>_restored` and open it.
 
-next > [[sdp/en/project1-lighting-effect|Project 1: Design of a lighting effect]]
+next > [[project1-lighting-effect|Project 1: Design of a lighting effect]]

@@ -5,7 +5,7 @@ tags:
   - herramientas
 ---
 
-prev > [[sdp/es/index|inicio]]
+prev > [[index|inicio]]
 
 Para las prácticas de la asignatura se usa el software **Quartus** de Altera. En los ordenadores del laboratorio está instalada la versión **17.1.1 Internal Build 593**. Es posible (y recomendable) instalar esa misma versión en tu ordenador para trabajar también fuera del laboratorio sin problemas de compatibilidad. Esta página explica cómo hacerlo.
 
@@ -43,4 +43,4 @@ Después de instalar la versión 17.1 hay que aplicar una actualización para ll
 
 ![[../assets/instalar-quartus/captura-27-01-26-4.png]]
 
-next > [[sdp/es/crear-qar|Ayuda: creación de QAR]]
+next > [[crear-qar|Ayuda: creación de QAR]]

@@ -6,7 +6,7 @@ tags:
   - secuenciales
 ---
 
-prev > [[sdp/es/crear-qar|Ayuda: creación de QAR]]
+prev > [[crear-qar|Ayuda: creación de QAR]]
 
 <link rel="stylesheet" href="../../static/step-navigation.css" />
 
@@ -199,4 +199,4 @@ Recuerda que, tras asignar los pines, hay que volver a compilar el diseño antes
 
 </div>
 
-next > [[sdp/es/proyecto2-controlador-video|Proyecto 2: Diseño de un controlador de vídeo]]
+next > [[proyecto2-controlador-video|Proyecto 2: Diseño de un controlador de vídeo]]

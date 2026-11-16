@@ -6,7 +6,7 @@ tags:
   - fsm
 ---
 
-prev > [[sdp/en/project2-video-controller|Project 2: Design of a video controller]]
+prev > [[project2-video-controller|Project 2: Design of a video controller]]
 
 <link rel="stylesheet" href="../../static/step-navigation.css" />
 
@@ -16,7 +16,7 @@ prev > [[sdp/en/project2-video-controller|Project 2: Design of a video controlle
 
 ## Introduction
 
-In this project you redesign the lighting effect from [[sdp/en/project1-lighting-effect|Project 1]] using **state machines**, and add a new speed-control function using the push buttons on the board.
+In this project you redesign the lighting effect from [[project1-lighting-effect|Project 1]] using **state machines**, and add a new speed-control function using the push buttons on the board.
 
 ### Goals
 
@@ -64,7 +64,7 @@ The **FSM_lights** block is a **Moore** state machine that plays the role of the
 There is also a **counter** that acts as a frequency divider; you can use the same counter as in previous projects. For the on-board test use a modulus of **5,000,000**, so that the TC signal has a frequency of **10 Hz**.
 
 > [!question]- How many bits does the counter need for a modulus of 5,000,000?
->> [!todo] 23 bits, since 2²² = 4,194,304 < 5,000,000 ≤ 2²³ = 8,388,608. If the width is computed with `$clog2` (see [[sdp/en/project1-lighting-effect|Project 1]]) you do not need to work it out by hand.
+>> [!todo] 23 bits, since 2²² = 4,194,304 < 5,000,000 ≤ 2²³ = 8,388,608. If the width is computed with `$clog2` (see [[project1-lighting-effect|Project 1]]) you do not need to work it out by hand.
 
 Describe the design in Verilog and compile it.
 
@@ -168,4 +168,4 @@ Also test the design on the board. In this case, connect the **COUNT** output of
 
 </div>
 
-next > [[sdp/en/project4-touchscreen|Project 4: Design of a touchscreen interface]]
+next > [[project4-touchscreen|Project 4: Design of a touchscreen interface]]

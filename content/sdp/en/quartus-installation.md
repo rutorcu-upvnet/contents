@@ -5,7 +5,7 @@ tags:
   - tools
 ---
 
-prev > [[sdp/en/index|home]]
+prev > [[index|home]]
 
 The lab sessions of this course use Altera's **Quartus** software. The lab computers have version **17.1.1 Internal Build 593** installed. You can (and we recommend you do) install the same version on your own computer so that you can also work outside the lab without compatibility problems. This page explains how.
 
@@ -43,4 +43,4 @@ After installing version 17.1 you must apply an update to reach **17.1.1 Interna
 
 ![[../assets/instalar-quartus/captura-27-01-26-4.png]]
 
-next > [[sdp/en/qar-archive|Help: creating QAR files]]
+next > [[qar-archive|Help: creating QAR files]]

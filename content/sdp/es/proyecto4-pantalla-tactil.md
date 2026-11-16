@@ -7,7 +7,7 @@ tags:
   - signaltap
 ---
 
-prev > [[sdp/es/proyecto3-luces-fsm|Proyecto 3: Diseño de un juego de luces mejorado]]
+prev > [[proyecto3-luces-fsm|Proyecto 3: Diseño de un juego de luces mejorado]]
 
 <link rel="stylesheet" href="../../static/step-navigation.css" />
 
@@ -44,7 +44,7 @@ En este proyecto se retoma la pantalla táctil de la placa DE2-115 y se implemen
 
 ![[../assets/diseno-de-una-comunicacion-serie/pantalla-tactil-ltm/imagen042.png]]
 
-Se utiliza la misma pantalla táctil que en el [[sdp/es/proyecto2-controlador-video|Proyecto 2]]. En ella, la visualización y la captura del punto de contacto son totalmente independientes, lo que permite usar solo la captura sin visualizar nada en la pantalla, como se hace en este proyecto.
+Se utiliza la misma pantalla táctil que en el [[proyecto2-controlador-video|Proyecto 2]]. En ella, la visualización y la captura del punto de contacto son totalmente independientes, lo que permite usar solo la captura sin visualizar nada en la pantalla, como se hace en este proyecto.
 
 ![[../assets/diseno-de-una-comunicacion-serie/estructura-pantalla-tactil-ltm/imagen043.png]]
 
@@ -137,7 +137,7 @@ A partir de la propuesta de concatenar las dos secuencias, se plantea el diagram
 
 El esquema tiene los siguientes bloques:
 
-- A la izquierda, un contador de módulo **ADC_DCLK_CNT** (definido como parámetro) que actúa como divisor de frecuencia y fija la velocidad de transmisión entre 10 kbps y 2 Mbps, por ejemplo 70 kbps. Puede usarse el contador del [[sdp/es/proyecto1-juego-luces|Proyecto 1]].
+- A la izquierda, un contador de módulo **ADC_DCLK_CNT** (definido como parámetro) que actúa como divisor de frecuencia y fija la velocidad de transmisión entre 10 kbps y 2 Mbps, por ejemplo 70 kbps. Puede usarse el contador del [[proyecto1-juego-luces|Proyecto 1]].
 - En el centro, un contador de **módulo 80** que sirve de referencia para los 80 semiperiodos de la secuencia de lectura de ambas coordenadas. De nuevo, sirve nuestro viejo contador de confianza.
 - Abajo, en amarillo, el bloque que genera **ADC_DCLK**, a partir de la cuenta de semiperiodos y/o la señal TC del primer contador.
 - A la derecha, el bloque que genera **ADC_DIN** en función de la cuenta de semiperiodos.
@@ -308,4 +308,4 @@ Verifica el diseño mejorado con el *testbench* proporcionado y pruébalo en la 
 
 </div>
 
-next > [[sdp/es/index|Volver al índice]]
+next > [[index|Volver al índice]]

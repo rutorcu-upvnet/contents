@@ -7,7 +7,7 @@ tags:
   - signaltap
 ---
 
-prev > [[sdp/en/project3-lights-fsm|Project 3: Design of an upgraded lighting effect]]
+prev > [[project3-lights-fsm|Project 3: Design of an upgraded lighting effect]]
 
 <link rel="stylesheet" href="../../static/step-navigation.css" />
 
@@ -44,7 +44,7 @@ In this project you go back to the touchscreen of the DE2-115 board and implemen
 
 ![[../assets/diseno-de-una-comunicacion-serie/pantalla-tactil-ltm/imagen042.png]]
 
-This project uses the same touchscreen as [[sdp/en/project2-video-controller|Project 2]]. Display and touch capture are completely independent, so you can use only the touch capture without displaying anything, as you will do here.
+This project uses the same touchscreen as [[project2-video-controller|Project 2]]. Display and touch capture are completely independent, so you can use only the touch capture without displaying anything, as you will do here.
 
 ![[../assets/diseno-de-una-comunicacion-serie/estructura-pantalla-tactil-ltm/imagen043.png]]
 
@@ -137,7 +137,7 @@ Building on the idea of concatenating the two sequences, the following block dia
 
 The schematic has the following blocks:
 
-- On the left, a counter with modulus **ADC_DCLK_CNT** (a parameter) that acts as a frequency divider and sets the transmission speed between 10 kbps and 2 Mbps, for example 70 kbps. You can use the counter from [[sdp/en/project1-lighting-effect|Project 1]].
+- On the left, a counter with modulus **ADC_DCLK_CNT** (a parameter) that acts as a frequency divider and sets the transmission speed between 10 kbps and 2 Mbps, for example 70 kbps. You can use the counter from [[project1-lighting-effect|Project 1]].
 - In the centre, a **modulo-80** counter that is the reference for the 80 half-periods of the sequence reading both coordinates. Again, our old reliable counter will do.
 - Below, in yellow, the block that generates **ADC_DCLK**, from the half-period count and/or the TC signal of the first counter.
 - On the right, the block that generates **ADC_DIN** from the half-period count.
@@ -308,4 +308,4 @@ Verify the upgraded design with the provided testbench and test it on the board.
 
 </div>
 
-next > [[sdp/en/index|Back to the index]]
+next > [[index|Back to the index]]

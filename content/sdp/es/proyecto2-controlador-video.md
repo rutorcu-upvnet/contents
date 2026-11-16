@@ -7,7 +7,7 @@ tags:
   - memorias
 ---
 
-prev > [[sdp/es/proyecto1-juego-luces|Proyecto 1: Diseño de un juego de luces]]
+prev > [[proyecto1-juego-luces|Proyecto 1: Diseño de un juego de luces]]
 
 <link rel="stylesheet" href="../../static/step-navigation.css" />
 
@@ -392,7 +392,7 @@ Realiza el diseño para mostrar una **imagen de 800 × 480 píxeles con direccio
 
 > [!warning] Advertencias
 > - Copia el fichero de inicialización (el HEX) a la carpeta del proyecto de Quartus **antes** de generar la ROM.
-> - Los ficheros de inicialización de memoria no siempre se guardan por defecto en el QAR. Consulta [[sdp/es/crear-qar|Ayuda: creación de QAR]] para añadirlos a mano (**Advanced... > Add...**).
+> - Los ficheros de inicialización de memoria no siempre se guardan por defecto en el QAR. Consulta [[crear-qar|Ayuda: creación de QAR]] para añadirlos a mano (**Advanced... > Add...**).
 
 Después verifica el diseño con ModelSim y el emulador de pantalla del apartado anterior, y pruébalo en la placa.
 
@@ -601,4 +601,4 @@ El teclado se conecta a la FPGA con dos señales generadas por el teclado sobre 
 
 </div>
 
-next > [[sdp/es/proyecto3-luces-fsm|Proyecto 3: Diseño de un juego de luces mejorado]]
+next > [[proyecto3-luces-fsm|Proyecto 3: Diseño de un juego de luces mejorado]]
