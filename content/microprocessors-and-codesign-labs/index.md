@@ -1,0 +1,22 @@
+---
+title: Microprocessors and codesign labs
+---
+
+[All courses](../index.md)
+
+For questions mail rutorcu@upv.es or mpeiro@upv.es
+
+This is the webpage contains the laboratory sessions of the [NANO](https://nano.upv.es/) Microprocessors and Codesign itinerary. The following labs are online at the moment:
+
+**RISC-V introduction**
+- [[RISC-V assembly programming]]
+- [[Simple RV32I monocycle processor]]
+- [[Full RV32I monocycle processor]]
+- [[Programming our processor]]
+- [[Pipelined RV32I processor]]
+
+**Other contents**
+- [[The QTRVSIM simulator]]
+- [[Simple RV32I architecture]]
+- [[Full RV32I architecture]]
+- [[Little Endian Converter]]

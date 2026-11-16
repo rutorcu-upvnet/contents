@@ -17,7 +17,7 @@ const config: QuartzConfig = {
     },
     locale: "en-US",
     baseUrl: "rutorcu-upvnet.github.io/upcodesign",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: ["private", "templates", ".obsidian", "content.zip"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",

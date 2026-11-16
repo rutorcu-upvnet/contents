@@ -3,15 +3,20 @@ import * as Component from "./quartz/components"
 import { QuartzComponent } from "./quartz/components/types"
 // @ts-ignore
 import stepNavigationScript from "./quartz/components/scripts/step-navigation-init.inline"
+// @ts-ignore
+import littleEndianConverterScript from "./quartz/components/scripts/little-endian-converter.inline"
 
 const StepNavigation: QuartzComponent = () => null
 StepNavigation.afterDOMLoaded = stepNavigationScript
+
+const LittleEndianConverter: QuartzComponent = () => null
+LittleEndianConverter.afterDOMLoaded = littleEndianConverterScript
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [StepNavigation],
+  afterBody: [StepNavigation, LittleEndianConverter],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/jackyzha0/quartz",
