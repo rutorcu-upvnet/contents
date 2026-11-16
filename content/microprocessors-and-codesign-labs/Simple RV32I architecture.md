@@ -4,6 +4,12 @@ draft: false
 tags:
 ---
 
+<link rel="stylesheet" href="../static/step-navigation.css" />
+
+<div class="step-container">
+
+<div class="step active" data-step="1">
+
 The tentative pipeline of the presented processor is shown in the below image, take your time to understand the different components and their interconnections:
 
 ![[img/riscv_basico.png]] 
@@ -11,6 +17,10 @@ The tentative pipeline of the presented processor is shown in the below image, t
 # Functional units
 
 The functional units are 
+
+</div>
+
+<div class="step" data-step="2">
 
 ## Instruction memory
 
@@ -21,6 +31,10 @@ Inputs:
 
 Outputs:
 - Instruction: The 32-bit instruction read from memory
+
+</div>
+
+<div class="step" data-step="3">
 
 ## Register unit
 
@@ -34,6 +48,10 @@ Inputs:
 Outputs:
 - Read data 1: Data corresponding to read register 1
 - Read data 2: Data corresponding to read register 2
+
+</div>
+
+<div class="step" data-step="4">
 
 ## ALU
 
@@ -55,6 +73,10 @@ Outputs:
 - ALU result: Result of the operation of the ALU
 - Zero: Set to one if ALU result is zero
 
+</div>
+
+<div class="step" data-step="5">
+
 ## Data memory
 
 Stores program variables. Is also referred as the program RAM. It is accessed when the processor issues a load (read memory) or a store (write into memory) instruction.
@@ -67,6 +89,10 @@ Inputs:
 
 Outputs:
 - Read data: Corresponds to the data present in input *Address*
+
+</div>
+
+<div class="step" data-step="6">
 
 ## Control unit
 
@@ -82,6 +108,10 @@ Outputs:
 - MemWrite: Tells the data memory when to write the data in its *write data* input port to its *write address* memory address.
 - ALUSrc: Tells the ALU which source operand should its second operand take (an immediate or a register-saved input operand)
 - RegWrite: Tells the register file whether to write the data in its *Write data* port into its *Write address* register address.
+
+</div>
+
+<div class="step" data-step="7">
 
 ## ALU control unit
 
@@ -104,3 +134,15 @@ Inputs
 
 Outputs:
 - Op: determines the ALU operation as seen in [[Simple RV32I architecture#ALU]]
+
+</div>
+
+<div class="navigation">
+  <button id="prevBtn">Previous</button>
+  <div class="step-indicator">
+    <span><span id="currentStep">1</span> of <span id="totalSteps">7</span></span>
+  </div>
+  <button id="nextBtn">Next</button>
+</div>
+
+</div>

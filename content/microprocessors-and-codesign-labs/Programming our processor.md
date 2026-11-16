@@ -6,10 +6,20 @@ tags:
 
 prev > [[Full RV32I monocycle processor]]
 
+<link rel="stylesheet" href="../static/step-navigation.css" />
+
+<div class="step-container">
+
+<div class="step active" data-step="1">
+
 ## Preamble and setup
 Until now we have learned how to program in RV32I assembly [[RISC-V assembly programming]] and implemented a RV32I singlecycle processor [[Simple RV32I monocycle processor]] So the next logical step is to write C++ programs to execute in our home-made processor.
 
 Our homemade processor is not very advanced, as such RAMs and ROMs are implemented in the FPGA fabric, this is very fast (convenient for doing everything in a single cycle) but consumes a lot of resources. As such, our processor is limited to 1536 bytes of storage in our FPGA. To make efficient use of such memory we will open our previous practice completed CPU and perform some modifications.
+
+</div>
+
+<div class="step" data-step="2">
 
 ### Exercise 1. Modifying CPU code to take varying amounts of ROM and RAM
 1. Open the top_level module of our processor named `tiny_riscv.sv` and replace its parameters by the following ones:
@@ -58,6 +68,10 @@ Our homemade processor is not very advanced, as such RAMs and ROMs are implement
 ```verilog
     assign wren_gpio = (daddr>=(d+'h10000000)) ? wren:0;
 ```
+
+</div>
+
+<div class="step" data-step="3">
 
 ## Writing and compiling our own C++ code
 To execute C++ code in our processor we need 3 files:
@@ -200,6 +214,10 @@ SECTIONS
 >[!question]- Why is the IO pointer instantiated as a volatile int*? What would happen if it was instantiated as a int*?
 >> [!todo] It is instantiated as volatile to prevent the compiler from optimizing IO accesses into nothing. If a variable is not declared volatile and not read in the program, the compiler optimizes it. However, volatile variables are not able to be opimized away, as such, our IO accesses should not be optimized.
 
+</div>
+
+<div class="step" data-step="4">
+
 ### Exercise 3. Compiling and uploading the code
 To compile our code we will execute the following cmd commands:
 ```bash
@@ -227,6 +245,11 @@ While your bitstream is being generated answer the following questions:
  >[!question] Analyze the code to check what will happen if we change the value in the RAM.txt with another value. Will the code still function? What will happen in the FPGA when we flash the bitfile with this changes?
 
 **Show this exercise to the professor for evaluation in class**
+
+</div>
+
+<div class="step" data-step="5">
+
 ### Exercise 4. Extending the code
 Uncomment the commented methods. They are used to print the input value as decimal in the 7-segment display. Change the two writeIO method calls for the new writeIOdecimal calls to see the Fibonacci sequence in decimal on the 7segment.
 
@@ -236,5 +259,17 @@ It should now print the Fibonacci succession in decimal (instead of hexadecimal)
 Write a new program modifying `main.cpp` that includes the use of `readIO()` function to read the GPIO inputs (the switches on the board). Compile it, regenerate the ROM/RAM files and the bitfile, and test it on the FPGA by changing the switches while the program is running.
 
 **Show this exercise to the professor for evaluation in class**
+
+</div>
+
+<div class="navigation">
+  <button id="prevBtn">Previous</button>
+  <div class="step-indicator">
+    <span><span id="currentStep">1</span> of <span id="totalSteps">5</span></span>
+  </div>
+  <button id="nextBtn">Next</button>
+</div>
+
+</div>
 
 next > [[Pipelined RV32I processor]]

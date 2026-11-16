@@ -7,10 +7,20 @@ tags:
 prev > [[Simple RV32I monocycle processor]]
 
 
+<link rel="stylesheet" href="../static/step-navigation.css" />
+
+<div class="step-container">
+
+<div class="step active" data-step="1">
+
 In this practice session we will implement the simple processor which we have seen in the corresponding theory session. Such processor is derived from the descriptions on the Patterson and Hennesy "Computer Organization and Design, RISC-V edition" Chapter 4.
 Such processor provides support for the complete RV32I instruction set.
 
 See [[Full RV32I architecture]] for the RISC‑V architecture overview.
+
+</div>
+
+<div class="step" data-step="2">
 
 ## All RV32I opcodes and their meaning
 As you might remember, we extensively used a RV32I opcode list in our theory sessions for codifying control signals and understanding the datapath of the processor. Below a list of the opcodes that the processor that we implement in this practice supports:
@@ -28,6 +38,9 @@ As you might remember, we extensively used a RV32I opcode list in our theory ses
 | 0010111 | AUIPC  | U-format  | *Stores PC+immediate to register*               |
 | 1101111 | JAL    | UJ-format | *20-bit immediate for offset*                   |
 
+</div>
+
+<div class="step" data-step="3">
 
 ## New Vivado project with changes
 Download the new Vivado project from Poliformat. This project includes the modified processor structure and the new control signals, but it does not implement all the multiplexors required for the processor to work in `riscv_core.sv`.
@@ -38,6 +51,10 @@ However, this Vivado project has some modules that are left to implement by the 
 3. Control. As in the previous practice, the implementation of Control is left to the student.
 4. ALU. As in the previous practice, the implementation of the ALU module is left to the student.
 5. BVgen. This module generates the `BranchVal` control by inverting the `Zero` signal depending on the Branch instrution type.
+
+</div>
+
+<div class="step" data-step="4">
 
 ## Designing a new Control module
 In the previous practice, we developed a control module capable of supporting some (but not all) RV32I instructions. In this lab session we will support the totality of unprivileged instructions (Excluding System, Synch and Counter access instructions)
@@ -55,6 +72,9 @@ To account for the new supported instructions, we adapted the ALUOp behavior as 
 
 **BEWARE**, the `01` ALUOp encoding has changed from substract to I-format instructions. This is due to the need to differentiate I-format instructions and R-format instructions. As I-format instructions (generally) don't encode the operation in the funct7 field.
 
+</div>
+
+<div class="step" data-step="5">
 
 # Exercises
 ## Exercise 1. Generate the control signals of the processor
@@ -73,6 +93,10 @@ Fill the following table with the control signals of the processor. Optionally, 
 |      *JAL*      | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="2" style="width: 60px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> |
 
 Upload a capture of this table called Exercise1.png into the poliformat task.
+
+</div>
+
+<div class="step" data-step="6">
 
 ## Exercise 2. Generate the ALUControl output signals
 Given the following table describing ALU op inputs:
@@ -120,26 +144,69 @@ Create a table that given the `ALUOp`, `Funct3` and `Funct7` inputs generates th
 
 Upload a capture of this table called `Exercise2.png` into the poliformat task. Optionally upload your google_docs/excel table into the task with the name Exercise2.[extension]
 
+</div>
+
+<div class="step" data-step="7">
+
 ## Exercise 3. Control
 Using the exercise 1 table inputs and outputs, open the provided `control.sv` module and fill the gaps.
+
+</div>
+
+<div class="step" data-step="8">
+
 ## Exercise 4. ALUControl
 Using the exercise 2 table inputs and outputs, open the provided `alu_control.sv` module and fill the gaps.
+
+</div>
+
+<div class="step" data-step="9">
+
 ## Exercise 5. ALU
 Open the new project ALU `ph_alu.sv` and provide support for the new operations using the [[Full RV32I monocycle processor#Exercise 2. Generate the ALUControl output signals|Exercise 2]] ALU op table. 
 
 Note that previous ALU input definition was `input [w-1:0] a,b;` while this ALU input definition is `input signed [w-1:0] a,b;` If a and b are not declared signed the shift right arithmetic operator will not function properly.
+
+</div>
+
+<div class="step" data-step="10">
+
 ## Exercise 6. Immediate generation
 Open the new project `imm.sv` immediate generator and paste your previous practice immediate generation code here. If your previous practice immediate generation code did not support all immediate instructions, please, provide support for them now.
+
+</div>
+
+<div class="step" data-step="11">
 
 ## Testing the processor
 The Vivado project provided has a default testbench that compares your processor register values and pc to a known and functioning RISC-V processor each cycle. It provides a warning if these values do not match, stopping the simulation. When the simulation is stopped a message with the format `"Rams are different at index 3: golden_ram[3] = 0x00000001, ram_mem[3] = 0xFFFFFFFF` is displayed in the TCL console. **If the simulation reaches the `$stop` value at line 76 and the PC is not zero, then your processor passed our toy test!!**
 
+</div>
+
+<div class="step" data-step="12">
+
 ## Optional. Exercise 7. Generating a bitfile with our functioning processor.
 Analise the assembly code of `[project]\riscv_txt\Cafe_and_switch.txt`. As you can see this code is reading and writing to address `0xDEAD0000`. This address is memory mapped to the 7 segment display *when writing* and to the 16 board switches *when reading*. Replace the `from` and `fram` parameters from `tiny_riscv.sv` for your corresponding `Cafe_and_switch.txt` and `ram_7seg_bytes.txt`, generate a new bitstream, and flash it into the FPGA. Is the Cafe_and_switch.txt assembler code doing what you expected?
+
+</div>
+
+<div class="step" data-step="13">
 
 ## Optional. Exercise 8. Modifying Cafe_and_switch.txt to process switch inputs instantaneously
 As you can see with [[Full RV32I monocycle processor#Optional. Exercise 7. Generating a bitfile with our functioning processor.|Exercise 7]], switch values take a while to update on the 7 segment displays. However, our processor is running at a lightning fast 10MHz. Modify the Cafe_and_switch assembler code to continuously update the right four 7segment displays with the FPGA switch values, but make it update the leftmost switches with memory contents once a second.
 For compiling your program ask for help to the professor.
 **Generate a bitfile, flash it into the FPGA and realize that you programmed your own RV32I processor and wrote original functioning code running on it!!**
+
+</div>
+
+<div class="navigation">
+  <button id="prevBtn">Previous</button>
+  <div class="step-indicator">
+    <span><span id="currentStep">1</span> of <span id="totalSteps">13</span></span>
+  </div>
+  <button id="nextBtn">Next</button>
+</div>
+
+</div>
 
 next > [[Programming our processor]]

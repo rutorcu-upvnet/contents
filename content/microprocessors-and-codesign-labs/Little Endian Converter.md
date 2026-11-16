@@ -4,6 +4,12 @@ draft: false
 tags:
 ---
 
+<link rel="stylesheet" href="../static/step-navigation.css" />
+
+<div class="step-container">
+
+<div class="step active" data-step="1">
+
 Use the tool below to convert a sequence of hexadecimal bytes into 32‑bit little‑endian words. You may upload a text file or paste hexadecimal bytes directly. An example input file is available: [example-input.txt](./example-input.txt).
 
 <div id="converter-container" style="max-width: 800px; margin: 2rem auto;">
@@ -32,6 +38,10 @@ Use the tool below to convert a sequence of hexadecimal bytes into 32‑bit litt
 
 </div>
 
+</div>
+
+<div class="step" data-step="2">
+
 # Description
 
 The converter groups individual bytes in sets of four (32 bits) and reverses their byte order to produce 32‑bit little‑endian words.
@@ -52,6 +62,10 @@ Output (32‑bit little‑endian words):
 78563412
 00EFCDAB
 ```
+
+</div>
+
+<div class="step" data-step="3">
 
 ## Accepted input formats
 - Space‑separated bytes: `12 34 56 78 AB CD EF 00`
@@ -78,3 +92,15 @@ Output (32‑bit little‑endian words):
 
 > [!exclamation] Keyboard shortcuts
 > **Ctrl + Enter** inside the input area: perform conversion
+
+</div>
+
+<div class="navigation">
+  <button id="prevBtn">Previous</button>
+  <div class="step-indicator">
+    <span><span id="currentStep">1</span> of <span id="totalSteps">3</span></span>
+  </div>
+  <button id="nextBtn">Next</button>
+</div>
+
+</div>

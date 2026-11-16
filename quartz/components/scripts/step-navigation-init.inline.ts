@@ -15,6 +15,50 @@ document.addEventListener("nav", () => {
     prevBtn.disabled = currentStep === 1
     nextBtn.disabled = currentStep === steps.length
   }
+  const showAnchorStep = (hash: string) => {
+    if (!hash.startsWith("#") || hash.length === 1) return
+    let id: string
+    try {
+      id = decodeURIComponent(hash.slice(1))
+    } catch (error) {
+      if (!(error instanceof URIError)) throw error
+      console.warn("Invalid step anchor:", hash)
+      return
+    }
+    const target = document.getElementById(id)
+    const targetStep = target?.closest(".step-container .step")
+    const index = Array.from(steps).findIndex((step) => step === targetStep)
+    if (index !== -1) {
+      currentStep = index + 1
+      showStep()
+      return target
+    }
+  }
+  const onAnchorClick = (event: MouseEvent) => {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.ctrlKey ||
+      event.metaKey ||
+      event.shiftKey ||
+      event.altKey
+    )
+      return
+    if (!(event.target instanceof Element)) return
+    const link = event.target.closest("a")
+    if (!link || link.target || link.hasAttribute("download")) return
+    const url = new URL(link.href, window.location.href)
+    if (
+      url.origin === window.location.origin &&
+      url.pathname === window.location.pathname &&
+      url.search === window.location.search
+    ) {
+      showAnchorStep(url.hash)
+    }
+  }
+  const onHashChange = () => {
+    showAnchorStep(window.location.hash)?.scrollIntoView()
+  }
   const previous = () => {
     currentStep = Math.max(1, currentStep - 1)
     showStep()
@@ -28,9 +72,14 @@ document.addEventListener("nav", () => {
 
   prevBtn.addEventListener("click", previous)
   nextBtn.addEventListener("click", next)
+  document.addEventListener("click", onAnchorClick)
+  window.addEventListener("hashchange", onHashChange)
   window.addCleanup(() => {
     prevBtn.removeEventListener("click", previous)
     nextBtn.removeEventListener("click", next)
+    document.removeEventListener("click", onAnchorClick)
+    window.removeEventListener("hashchange", onHashChange)
   })
   showStep()
+  showAnchorStep(window.location.hash)?.scrollIntoView()
 })

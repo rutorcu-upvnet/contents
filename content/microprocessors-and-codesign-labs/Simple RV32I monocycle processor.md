@@ -6,10 +6,20 @@ tags:
 
 prev > [[RISC-V assembly programming]]
 
+<link rel="stylesheet" href="../static/step-navigation.css" />
+
+<div class="step-container">
+
+<div class="step active" data-step="1">
+
 In this practice session we will implement the simple processor which we have seen in the corresponding theory session. Such processor is derived from the descriptions on the Patterson and Hennesy "Computer Organization and Design, RISC-V edition" Chapter 4.[1-4].
 Such processor provides support for the following RISC-V instructions `LW`,`SW`,`BEQ`,`ADD`,`SUB`,`AND`,`OR`,`ADDI`,`ANDI`,`ORI`.
 
 See [[Simple RV32I architecture]] for the RISC‑V architecture overview.
+
+</div>
+
+<div class="step" data-step="2">
 
 # Exercises
 
@@ -38,6 +48,10 @@ Take the description of the [[Simple RV32I architecture#Control unit]] and defin
 
 > [!warning] Fill the following table, create a snapshot of it and present it as `exercise1.png` in poliformat. If in doubt ask the professor, this step is crucial in the design of your processor.
 
+</div>
+
+<div class="step" data-step="3">
+
 ## Exercise 2. Generate the ALUControl output signals
 
 | **Inst Opcode** | **ALUOp** | **Operation** | **Funct7**                                               | **Funct3**                                               | **ALU action**                             | **Op**                                   |
@@ -55,17 +69,33 @@ Take the description of the [[Simple RV32I architecture#Control unit]] and defin
 
 > [!warning] Fill the following table of the output ALU action from the *ALUOp*, *Funct7* and *Funct3* fields. An example of a valid ALU action is add, sub, and, or... with the corresponding ALU control output from the ALU description in [[Simple RV32I architecture#ALU]]. Create a capture of the following table with the missing fields full and attach it in poliformat in a file named `exercise2.png`
 
+</div>
+
+<div class="step" data-step="4">
+
 ## Exercise 3. Implementing the control module
 
 Open the Vivado project provided from poliformat. With the Vivado GUI open the Control module located in the file `control.sv` and implement the logic so that outputs are driven as described in [[Simple RV32I monocycle processor#Exercise 1. Generate the Control signals of the processor]]
+
+</div>
+
+<div class="step" data-step="5">
 
 ## Exercise 4. Implementing the ALU control module
 
 Implement the ALUControl module located in the `alu_control.sv` file so that outputs are driven as described in [[Simple RV32I monocycle processor#Exercise 2. Generate the ALUControl output signals]]
 
+</div>
+
+<div class="step" data-step="6">
+
 ## Exercise 5. Implementing the ALU module
 
 Implement the ALU module located in the `ph_alu.sv` file so that it follows the behavior described in [[Simple RV32I architecture#ALU]]
+
+</div>
+
+<div class="step" data-step="7">
 
 ## Exercise 6. Implementing the immediate generator
 
@@ -74,6 +104,10 @@ The immediate generator (located in file `imm.sv`) generates immediates using th
 ![[img/instruction_types.png]]
 
 Each immediate instruction type has different related opcodes and immediate values codified in different bit fields. The immediate generator must generate a full 32-bit integer from the immediate field. Fill the immediate generator system verilog code so that it generates immediates for the load and store instructions.
+
+</div>
+
+<div class="step" data-step="8">
 
 ## Testing the processor
 
@@ -111,5 +145,17 @@ As our processor follows the [Hardvard architecture](https://en.wikipedia.org/wi
 Thus, this program accesses the first memory value by using the pseudo-immediate register *zero*, in the first load. The result of a successful execution is proven by the following values in the processor RAM:
 
 ![[img/Fibonacci_results.png]]
+
+</div>
+
+<div class="navigation">
+  <button id="prevBtn">Previous</button>
+  <div class="step-indicator">
+    <span><span id="currentStep">1</span> of <span id="totalSteps">8</span></span>
+  </div>
+  <button id="nextBtn">Next</button>
+</div>
+
+</div>
 
 next > [[Full RV32I monocycle processor]]

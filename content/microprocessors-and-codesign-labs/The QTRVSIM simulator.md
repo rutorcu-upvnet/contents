@@ -4,6 +4,12 @@ draft: false
 tags:
 ---
 
+<link rel="stylesheet" href="../static/step-navigation.css" />
+
+<div class="step-container">
+
+<div class="step active" data-step="1">
+
 # The [QTRVSIM](https://comparch.edu.cvut.cz/qtrvsim/app/) simulator
 
 When you open the QTSim simulator the following window will appear:
@@ -18,8 +24,20 @@ Now you are presented with all the building blocks of our processor. From progra
 
 This simulator is able to execute all RISCV32IM code, as it implements the Integer and Multiplication extensions.
 
+</div>
+
+<div class="step" data-step="2">
+
+## Register window
+
 A window with the status of the register file can be opened clicking -> `Windows\Registers`
 ![[img/Registers.png]]
+
+</div>
+
+<div class="step" data-step="3">
+
+## Program window
 
 A window with the program code can be open by clicking -> `Windows\Program` resulting in the window below opening. The currently executing instruction is highlighted.
 
@@ -27,11 +45,34 @@ A window with the program code can be open by clicking -> `Windows\Program` resu
 
 However, using this window to debug the assembler code can prove hard, as some instructions are translated into pseudoinstructions, breaking your code structuring. To ease debugging we can break up or code into sections with labels such as the above code, where the code is broken down into two labeled sections: `start`and `final`
 
+</div>
+
+<div class="step" data-step="4">
+
+## Show symbols
+
 To go into the assembler code corresponding to the *final* section we use the `Machine\Show Symbol` feature. Selecting the `final` symbol and clicking `show program`
 
 ![[img/20240930134351.png]]
+
+</div>
+
+<div class="step" data-step="5">
+
+## Breakpoints
 
 Furthermore, one can set [breakpoints](https://en.wikipedia.org/wiki/Breakpoint) in their assembler program by clicking in the Bp field, as shown below. If the program is ran with the `Machine\Run` command and encounters an instruction with a breakpoint, it's execution will pause. Breakpoints are useful to examine the program behavior in certain sections of code where the programmer suspects a bug is pressent.
 
 ![[img/20240930145136.png]]
 
+</div>
+
+<div class="navigation">
+  <button id="prevBtn">Previous</button>
+  <div class="step-indicator">
+    <span><span id="currentStep">1</span> of <span id="totalSteps">5</span></span>
+  </div>
+  <button id="nextBtn">Next</button>
+</div>
+
+</div>

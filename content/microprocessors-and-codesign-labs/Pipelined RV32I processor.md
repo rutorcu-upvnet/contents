@@ -6,6 +6,12 @@ tags:
 
 prev > [[Programming our processor]]
 
+<link rel="stylesheet" href="../static/step-navigation.css" />
+
+<div class="step-container">
+
+<div class="step active" data-step="1">
+
 ## Introduction: the 5 classic RISC-V stages
 In the previous practices we implemented a single-cycle processor, where every instruction goes through all the hardware in one (long) clock cycle. The clock period is therefore limited by the slowest instruction (a `lw`). Pipelining splits the execution of each instruction into stages separated by registers, so that **five instructions are in flight at the same time**, each one in a different stage. Ideally, one instruction finishes every cycle (CPI = 1) with a much shorter clock period.
 
@@ -38,6 +44,10 @@ As the example shows, overlapping the execution of instructions creates **hazard
 
 In this practice we will first observe how the hazards make a program fail, then avoid them by software (inserting `nop` instructions), and finally solve them in hardware step by step.
 
+</div>
+
+<div class="step" data-step="2">
+
 ## Initial project
 Download the Vivado project provided for this practice. Its top module `riscv_core.sv` already contains the 5-stage pipeline (pipeline registers, control signals traveling through the stages, ALU, register file, memories...) **but without any hazard handling**: no forwarded data, no stalls and no flushes. 
 Open the top level module and identify:
@@ -56,6 +66,10 @@ Open the top level module and identify:
 >> ```
 >> Modify these two lines in the register file to obtain the 2-instruction distance.
 
+</div>
+
+<div class="step" data-step="3">
+
 ## The Fibonacci test program
 The project already includes a Fibonacci program in the file `rom.txt`. It computes the Fibonacci sequence and stores every value in RAM. The expected sequence is `0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610`.
 
@@ -67,6 +81,10 @@ The project already includes a Fibonacci program in the file `rom.txt`. It compu
 >[!question] Does the program work? Which instructions read a stale value? Fill a table with the format `producer -> consumer, register, distance in instructions, hazard type`.
 
 **Upload a capture of the waveform showing a wrong value to the poliformat task, called `Exercise1.png`.**
+
+</div>
+
+<div class="step" data-step="4">
 
 ### Exercise 2. Software solution: inserting NOPs
 The simplest way to avoid hazards is to let the programmer (or the compiler) separate dependent instructions. A `nop` is pseudo instruction for `addi x0, x0, 0` and it has no effect on the processor state.
@@ -82,6 +100,10 @@ Set the `from` parameter to your new file, simulate and check that the sequence 
 >> [!todo] Compare the number of instructions of the loop with the original one and count the `nop`. All the `nop` are wasted cycles.
 
 **Show this exercise to the professor for evaluation in class**
+
+</div>
+
+<div class="step" data-step="5">
 
 ### Exercise 3. Data forwarding
 Forwarding sends the result of an instruction directly from the pipeline registers to the ALU inputs, without waiting for the write back stage.
@@ -114,6 +136,10 @@ Once forwarding is implemented:
 
 **Show this exercise to the professor for evaluation in class**
 
+</div>
+
+<div class="step" data-step="6">
+
 ### Exercise 4. Load-use hazards: stall
 When the instruction right after a `lw` uses the loaded register, the data is not available until the end of MEM, so forwarding is not enough and the pipeline must insert a bubble.
 
@@ -126,6 +152,10 @@ When the instruction right after a `lw` uses the loaded register, the data is no
 
 >[!question] Why is it enough to stall only one cycle? Why must the control signals of the bubble be set to 0?
 > > [!todo] After one cycle the load is in MEM/WB and its data can be forwarded to the instruction in EX. If the bubble kept the control signals, the stalled instruction would be executed twice (e.g. a `sw` writing twice, or a register being written with a wrong value).
+
+</div>
+
+<div class="step" data-step="7">
 
 ### Exercise 5. Control hazards: flush
 In our pipeline, branches and jumps are resolved in MEM. Instructions fetched after them are in IF, ID and EX and must be discarded if the branch is taken (or the jump is executed).
@@ -146,6 +176,10 @@ In our pipeline, branches and jumps are resolved in MEM. Instructions fetched af
 >[!question]- Why does `flush` have priority over `stall`?
 >> [!todo] If the branch in MEM is taken, the instructions in ID and EX are going to be discarded anyway, so there is no point in stalling for them.
 
+</div>
+
+<div class="step" data-step="8">
+
 ### Exercise 6. Final test
 Finally, run the **original** `rom.txt` (the one **without** any `nop`) in your complete processor with forwarding, stalls and flushes.
 1. Simulate it and check that the sequence `1, 1, 2, 3, 5, 8, 13, 21, 34, 55` is correct.
@@ -160,5 +194,17 @@ Finally, run the **original** `rom.txt` (the one **without** any `nop`) in your 
 **Show this exercise to the professor for evaluation in class**
 
 **Congratulations!! You have implemented a pipelined RV32I processor that handles data and control hazards!!**
+
+</div>
+
+<div class="navigation">
+  <button id="prevBtn">Previous</button>
+  <div class="step-indicator">
+    <span><span id="currentStep">1</span> of <span id="totalSteps">8</span></span>
+  </div>
+  <button id="nextBtn">Next</button>
+</div>
+
+</div>
 
 prev > [home](index)

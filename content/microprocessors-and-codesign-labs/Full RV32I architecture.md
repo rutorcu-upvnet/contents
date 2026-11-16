@@ -6,12 +6,22 @@ tags:
 
 prev > [[Simple RV32I monocycle processor]]
 
+<link rel="stylesheet" href="../static/step-navigation.css" />
+
+<div class="step-container">
+
+<div class="step active" data-step="1">
+
 In this practice session we will implement the RV32I core that we have seen in the theory session. The final schematic of such core is presented in the following image:
 ![[img/riscv_completo.png]]
 
 # Functional units
 
 We have the same functional units with some new datapath elements to implement the whole RV32I instruction set.
+
+</div>
+
+<div class="step" data-step="2">
 
 ## ALU 
 The ALU has now new operations to support the new instructions
@@ -28,6 +38,10 @@ The ALU has now new operations to support the new instructions
 | XOR                  | 0111 |
 | ShiftRightLogical    | 1000 |
 | ShiftRightArithmetic | 1001 |
+
+</div>
+
+<div class="step" data-step="3">
 
 ## Control unit
 
@@ -51,3 +65,15 @@ It also will add extra control signals to command the new hardware in the datapa
 - jal_jalr: indicates an inconditional jump
 - lui: uses a 20 bit immediate to load upper bits of a register
 - pctoalu: allows the ALU operate with the PC value
+
+</div>
+
+<div class="navigation">
+  <button id="prevBtn">Previous</button>
+  <div class="step-indicator">
+    <span><span id="currentStep">1</span> of <span id="totalSteps">3</span></span>
+  </div>
+  <button id="nextBtn">Next</button>
+</div>
+
+</div>

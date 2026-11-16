@@ -6,6 +6,12 @@ tags:
 
 prev > [home](index)
 
+<link rel="stylesheet" href="../static/step-navigation.css" />
+
+<div class="step-container">
+
+<div class="step active" data-step="1">
+
 In this session you should be provided with a [RISC-V programming reference card](https://cass-kul.github.io/files/riscv-card.pdf).
 In this reference card you will find the following useful information:
 1. RV32I instructions
@@ -13,6 +19,10 @@ In this reference card you will find the following useful information:
 3. All RISC-V pseudoinstructions and their assembly translation
 4. The stack layout of method calling convention
 5. The RISC-V CSR registers (That we will not use in this practice)
+
+</div>
+
+<div class="step" data-step="2">
 
 # [GNU assembler directives](https://sourceware.org/binutils/docs/as/)
 
@@ -23,11 +33,19 @@ Some general GNU assembler directives are essential when writing code.
 - We use the `.equ` to define assembler macros. Where `.equ SERIAL_PORT BASE 0xffffc000` would define a text substitution of the string `SERIAL_PORT_BASE` with the string `0xffffc000` in our code.
 - We use the `.org` directive to change the program address of the following data. This directive can be used in `.text` and `.data` regions. When used in text regions it defines the starting address where the program code will be stored. When used in data regions it defines the starting address where the data is stored.
 
+</div>
+
+<div class="step" data-step="3">
+
 # The QTRVSIM simulator
 
 In this practice we will use the QtRvSim RISC-V architecture simulator. This simulator will be used in multiple practices, thus, I advice you to take your time and familiarize yourself with it.
 
 See [[The QTRVSIM simulator]] for a detailed explanation and step-by-step instructions.
+
+</div>
+
+<div class="step" data-step="4">
 
 # Exercises
 
@@ -67,6 +85,10 @@ Run the program and check the values in registers `s0`,`s1` and `s2` and the val
 
 > [!warning] Upload your answers in a file named `exercise1.txt` to poliformat
 
+</div>
+
+<div class="step" data-step="5">
+
 ## Exercise 2. Control flow
 
 Let's check your knowledge of control flow by implementing the following C++ code into assembly:
@@ -97,6 +119,10 @@ list:
 ```
 
 > [!warning] Write your solution into a file called `exercise2.s` and attach it in poliformat
+
+</div>
+
+<div class="step" data-step="6">
 
 ## Exercise 3. Calling conventions and stack
 
@@ -145,6 +171,10 @@ foo:
 ```
 
 > [!warning] Write your solution into a file called `exercise3.s` and attach it in poliformat
+
+</div>
+
+<div class="step" data-step="7">
 
 ## Exercise 4. [Bubble sort](https://en.wikipedia.org/wiki/Bubble_sort)
 
@@ -247,6 +277,10 @@ swap_space:
 ```
 
 > [!warning] Write your solution into `exercise4.s` and attach it in poliformat
+
+</div>
+
+<div class="step" data-step="8">
 
 ## Exercise 5. ASM bubble sort with C++ code
 
@@ -375,5 +409,17 @@ Execute the `bubsort.elf` binary in the simulator by clicking
 and verify that everything works correctly.
 
 > [!warning] Zip your `main.cpp`, `bubsort.s`, `crt0local.s` and `bubsort.elf` into a zip file called `exercise5.zip` and upload it to poliformat
+
+</div>
+
+<div class="navigation">
+  <button id="prevBtn">Previous</button>
+  <div class="step-indicator">
+    <span><span id="currentStep">1</span> of <span id="totalSteps">8</span></span>
+  </div>
+  <button id="nextBtn">Next</button>
+</div>
+
+</div>
 
 next > [[Simple RV32I monocycle processor]]
