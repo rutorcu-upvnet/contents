@@ -11,6 +11,7 @@ Prácticas de la asignatura **Sistemas Digitales Programables** (UPV). Los dise�
 - [[crear-qar|Ayuda: creación de QAR]]
 
 **Proyectos**
+- [[tutorial-contador|Proyecto 0: Tutorial de diseño de un contador]]
 - [[proyecto1-juego-luces|Proyecto 1: Diseño de un juego de luces]]
 - [[proyecto2-controlador-video|Proyecto 2: Diseño de un controlador de vídeo]]
 - [[proyecto3-luces-fsm|Proyecto 3: Diseño de un juego de luces mejorado]]

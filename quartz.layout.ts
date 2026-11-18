@@ -12,6 +12,23 @@ StepNavigation.afterDOMLoaded = stepNavigationScript
 const LittleEndianConverter: QuartzComponent = () => null
 LittleEndianConverter.afterDOMLoaded = littleEndianConverterScript
 
+const CourseExplorer = Component.Explorer({
+  folderClickBehavior: "link",
+  mapFn: (node) => {
+    if (node.slug === "index") {
+      const sdp = node.children.find((child) => child.slugSegment === "sdp")
+      if (sdp) {
+        node.children = [
+          ...node.children.filter((child) => child !== sdp),
+          ...sdp.children.filter(
+            (child) => child.slugSegment === "es" || child.slugSegment === "en",
+          ),
+        ]
+      }
+    }
+  },
+})
+
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
@@ -49,7 +66,7 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer({ folderClickBehavior: "link" }),
+    CourseExplorer,
   ],
   right: [
     Component.Graph(),
@@ -73,7 +90,7 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer({ folderClickBehavior: "link" }),
+    CourseExplorer,
   ],
   right: [],
 }
