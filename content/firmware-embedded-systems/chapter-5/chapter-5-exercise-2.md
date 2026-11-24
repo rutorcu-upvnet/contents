@@ -14,9 +14,9 @@ aliases: [/chapter-5-exercise-2]
 
 AMD provides an Integrated Development Environment (IDE) for their FPGA solutions, where all the tools needed for building and debugging software are included. This software is called Vitis.
 
-In this section, you will code an application for the Microblaze CPU that you built in the previous session.
+In this section, you will code an application for the MicroBlaze CPU that you built in the previous session.
 
-1. We are going to need both the XSA from Vivado 2024.1 and an SDK that contains the Microblaze cross-compiler and the sysroot. Download both the XSA and SDK.zip from PoliformaT.
+1. We are going to need both the XSA from Vivado 2024.1 and an SDK that contains the MicroBlaze cross-compiler and the sysroot. Download both the XSA and SDK.zip from PoliformaT.
 2. Extract SDK.zip in a folder of your choice.
 3. Open Vitis Classic 2024.1.
 4. Choose the workspace you want to work in (recommended to leave the default one).

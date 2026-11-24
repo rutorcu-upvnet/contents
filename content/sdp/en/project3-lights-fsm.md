@@ -96,6 +96,8 @@ The **counter** is the same as in previous designs, now with **modulus 16**. The
 - when **KEY_UP**, connected to push button **KEY[1]**, goes low, the counter increases by 1;
 - when **KEY_DN**, connected to push button **KEY[2]**, goes low, the counter decreases by 1.
 
+The names **UP** and **DN** refer to the counting direction, not the speed. In the integrated design, increasing the counter value increases the divider and slows the lights down; decreasing it speeds them up. Since the count is modulo 16, wrapping from 15 to 0 or from 0 to 15 produces the opposite change.
+
 Keep in mind that:
 
 - The buttons are **active low**: the signal is 0 while the button is pressed and 1 when it is released.

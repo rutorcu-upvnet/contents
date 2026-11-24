@@ -16,7 +16,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "rutorcu-upvnet.github.io/upcodesign",
+    baseUrl: "rutorcu-upvnet.github.io/contents",
     ignorePatterns: ["private", "templates", ".obsidian", "content.zip"],
     defaultDateType: "modified",
     theme: {

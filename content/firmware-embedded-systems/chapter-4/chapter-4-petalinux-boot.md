@@ -1,25 +1,25 @@
 ---
-title: "4.2 Building Petalinux for Microblaze"
+title: "4.2 Building PetaLinux for MicroBlaze"
 aliases: [/chapter-4-petalinux-boot]
 ---
 
-In this section, we are going to build a custom Linux image using the Vivado XSA. The software that will be used are the Petalinux Tools 2024.1.
+In this section, we are going to build a custom Linux image using the Vivado XSA. The software that will be used are the PetaLinux Tools 2024.1.
 
 <link rel="stylesheet" href="../../static/step-navigation.css" />
 
 <div class="step-container">
 
 <div class="step active" data-step="1">
-<h2>Set Up Petalinux Project</h2>
+<h2>Set Up PetaLinux Project</h2>
 
 1. Connect to the Linux VM through *Windows Remote Desktop* application using the IP address and the username and password provided by the teacher.
-2. Open a terminal in Linux and run the script that configures the environment for Petalinux building commands.
+2. Open a terminal in Linux and run the script that configures the environment for PetaLinux building commands.
 
 ```shell
 source /opt/petalinuxTools/2024/settings.sh
 ```
 
-3. Create the Petalinux project. This project will be the center of all the changes made in the software for building the Linux platform and software that comes with it.
+3. Create the PetaLinux project. This project will be the center of all the changes made in the software for building the Linux platform and software that comes with it.
 
 ```shell
 petalinux-create -t project -n linux_mb_2024 --template microblaze
@@ -27,13 +27,13 @@ petalinux-create -t project -n linux_mb_2024 --template microblaze
 
 > [!question] Question 8
 > What options are there for the template argument?
-> Check UG1144 Petalinux Tools Reference Guide.
+> Check UG1144 PetaLinux Tools Reference Guide.
 </div>
 
 <div class="step" data-step="2">
 <h2>Load Hardware and Configure sstate Cache</h2>
 
-4. We have to tell Petalinux which hardware we have so that the correct software and drivers components are built. As the in the FPGA we can include any hardware that our imagination (and our Verilog coding skills) allow us, Petalinux Tools need to know exactly what we included and what not.
+4. We have to tell PetaLinux which hardware we have so that the correct software and drivers components are built. As the in the FPGA we can include any hardware that our imagination (and our Verilog coding skills) allow us, PetaLinux Tools need to know exactly what we included and what not.
 
 ```shell
 petalinux-config --get-hw-description <folder where the xsa was copied> --silentconfig
@@ -81,15 +81,15 @@ petalinux-config -c kernel
 10. Open *libxcrypt.inc* and change the SRCREV variable to `"55ea777e8d567e5e86ffac917c28815ac54cc341"`
 
 > [!info]
-> This last step is made to fix a bug in one of the Yocto recipes used in Petalinux Tools 2024.1. What it does is to change the commit SHA where it downloads the source code from to compile the libxcrypt library. It basically updates the library from version 4.4.30 to the latest one, where this bug has already been fixed.
+> This last step is made to fix a bug in one of the Yocto recipes used in PetaLinux Tools 2024.1. What it does is to change the commit SHA where it downloads the source code from to compile the libxcrypt library. It basically updates the library from version 4.4.30 to the latest one, where this bug has already been fixed.
 </div>
 
 <div class="step" data-step="4">
 <h2>Configure Boot Flow Offsets</h2>
 
-Let's analyze the boot flow. Petalinux will boot from the QSPI flash, using the bootflow that we saw in the slides. For that it will need several files and each one of them must be in a specific offset that we are configuring the Petalinux boot flow to find that file. To configure those offsets the following steps must be made:
+Let's analyze the boot flow. PetaLinux will boot from the QSPI flash, using the bootflow that we saw in the slides. For that it will need several files and each one of them must be in a specific offset that we are configuring the PetaLinux boot flow to find that file. To configure those offsets the following steps must be made:
 
-11. Go to the main Petalinux configuration screen:
+11. Go to the main PetaLinux configuration screen:
 
 ```shell
 petalinux-config
@@ -157,11 +157,11 @@ petalinux-build -c device-tree
 </div>
 
 <div class="step" data-step="6">
-<h2>Boot and Validate Petalinux</h2>
+<h2>Boot and Validate PetaLinux</h2>
 
 The project is completely configured. Now let's build an image and flash it into the Genesys 2 board.
 
-18. The command for building Petalinux images is `petalinux-build`. It takes very long to run so we are going to use a prebuilt image.
+18. The command for building PetaLinux images is `petalinux-build`. It takes very long to run so we are going to use a prebuilt image.
 19. For completeness, there is another command, called `petalinux-package`, that takes all the outputs from the previous one and puts it inside an MCS (Memory Configuration System) file. This file is used to initialize the QSPI flash inside the Genesys 2 board with all the required files for booting Linux.
 
 ![alt text](../img/MCSForm.png)
@@ -193,9 +193,9 @@ PONER AQUI TODAS LAS CAPTURAS
 
 ![alt text](../img/SerialConfig.png)
 
-28. Turn off and back on the board and wait for Petalinux to boot.
+28. Turn off and back on the board and wait for PetaLinux to boot.
 
-### Running some commands in Petalinux
+### Running some commands in PetaLinux
 
 Once in the login prompt, enter the `petalinux` user and then write a new password when asked by the system.
 

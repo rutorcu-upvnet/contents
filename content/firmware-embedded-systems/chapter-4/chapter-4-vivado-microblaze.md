@@ -1,5 +1,5 @@
 ---
-title: "4.1 Microblaze Linux-compatible system in Vivado"
+title: "4.1 MicroBlaze Linux-compatible system in Vivado"
 aliases: [/chapter-4-vivado-microblaze]
 ---
 
@@ -68,14 +68,14 @@ The project is almost completed, only one IP block is left: The QSPI controller.
 </div>
 
 <div class="step" data-step="4">
-<h2>Analyze Microblaze and Cache Configuration</h2>
+<h2>Analyze MicroBlaze and Cache Configuration</h2>
 
-In this section we are going to edit the Microblaze processor:
+In this section we are going to edit the MicroBlaze processor:
 
-6. Double click on the Microblaze processor.
+6. Double click on the MicroBlaze processor.
 
 > [!question] Question 3
-> What is needed for the Microblaze to run Linux?
+> What is needed for the MicroBlaze to run Linux?
 
 7. Go to the cache page and increase the cache to 64kB.
 

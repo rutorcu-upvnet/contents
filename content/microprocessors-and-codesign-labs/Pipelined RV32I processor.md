@@ -64,6 +64,7 @@ Open the top level module and identify:
 >> assign rddata1 = ((rdaddr1==wraddr) && (wraddr))? wrdata : regs[rdaddr1];
 >> assign rddata2 = ((rdaddr2==wraddr) && (wraddr))? wrdata : regs[rdaddr2];
 >> ```
+>> These expressions are valid only if a nonzero `wraddr` always indicates an enabled write. Otherwise, include the register file's write-enable signal in both bypass conditions to avoid forwarding invalid data.
 >> Modify these two lines in the register file to obtain the 2-instruction distance.
 
 </div>
@@ -80,7 +81,7 @@ The project already includes a Fibonacci program in the file `rom.txt`. It compu
 
 >[!question] Does the program work? Which instructions read a stale value? Fill a table with the format `producer -> consumer, register, distance in instructions, hazard type`.
 
-**Upload a capture of the waveform showing a wrong value to the poliformat task, called `Exercise1.png`.**
+**Upload a capture of the waveform showing a wrong value to the PoliformaT task, called `Exercise1.png`.**
 
 </div>
 
@@ -189,7 +190,7 @@ Finally, run the **original** `rom.txt` (the one **without** any `nop`) in your 
 >[!question]- Where are the stalls and flushes happening in the final execution? Mark in the waveform the cycles in which `stall` and `flush` are active.
 >> [!todo] One stall at the initial `lw` and three flushed instructions each time `bxx` is taken.
 
-**Upload a capture of the waveform showing the correct result and the stall/flush signals, called `Exercise6.png`, to the poliformat task.**
+**Upload a capture of the waveform showing the correct result and the stall/flush signals, called `Exercise6.png`, to the PoliformaT task.**
 
 **Show this exercise to the professor for evaluation in class**
 

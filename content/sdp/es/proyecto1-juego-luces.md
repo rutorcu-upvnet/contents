@@ -6,7 +6,7 @@ tags:
   - secuenciales
 ---
 
-prev > [[crear-qar|Ayuda: creación de QAR]]
+prev > [[tutorial-contador|Proyecto 0: Tutorial de diseño de un contador]]
 
 <link rel="stylesheet" href="../../static/step-navigation.css" />
 
@@ -67,7 +67,7 @@ Describe en Verilog un contador binario con las siguientes características:
 
 Verifica su funcionamiento con una simulación, mediante un testbench en Verilog, que contemple todas las combinaciones posibles de las entradas y compruebe los valores de las salidas.
 
-Puedes partir del código Verilog de la práctica Tutorial: tendrás que modificar el contador para que sea bidireccional y genere **TC** correctamente en ambos sentidos, y el testbench para que compruebe todas sus características.
+Puedes partir del código Verilog de la [[tutorial-contador|práctica Tutorial]]: tendrás que modificar el contador para que sea bidireccional y genere **TC** correctamente en ambos sentidos, y el testbench para que compruebe todas sus características.
 
 La imagen muestra un ejemplo de simulación con el contador funcionando en modo ascendente y descendente.
 
@@ -190,11 +190,11 @@ Recuerda que, tras asignar los pines, hay que volver a compilar el diseño antes
 </div>
 
 <div class="navigation">
-  <button id="prevBtn">Previous</button>
+  <button id="prevBtn">Anterior</button>
   <div class="step-indicator">
-    <span><span id="currentStep">1</span> of <span id="totalSteps">6</span></span>
+    <span><span id="currentStep">1</span> de <span id="totalSteps">6</span></span>
   </div>
-  <button id="nextBtn">Next</button>
+  <button id="nextBtn">Siguiente</button>
 </div>
 
 </div>

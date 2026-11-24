@@ -1,5 +1,5 @@
 ---
-title: "3.1 Exercise 1: Creating a project with Free RTOS"
+title: "3.1 Exercise 1: Creating a project with FreeRTOS"
 aliases: [/chapter-3-exercise-1]
 ---
 
@@ -9,14 +9,14 @@ aliases: [/chapter-3-exercise-1]
 
 <div class="step-container">
 <div class="step active" data-step="1">
-<h2>Creating a project with Free RTOS</h2>
+<h2>Creating a project with FreeRTOS</h2>
 
 > [!note] Objectives
 >
-> Create a base project like in [2.1](../chapter-2/chapter-2-exercise-2.md) using `Free RTOS` as a software platform<br>
+> Create a base project like in [2.1](../chapter-2/chapter-2-exercise-1.md) using `FreeRTOS` as a software platform<br>
 > Adjust the BSP configuration and select the appropriate timers<br>
 
-This exercise guides you through creating your first `Free RTOS` application on the `MicroBlaze` processor. You will create a Vitis platform based on your Vivado hardware design.
+This exercise guides you through creating your first `FreeRTOS` application on the `MicroBlaze` processor. You will create a Vitis platform based on your Vivado hardware design.
 
 > [!warning] Prerequisites 
 > Complete [Chapter 1](../chapter-1/index.md) to generate the hardware architecture and bitstream
@@ -59,9 +59,9 @@ This exercise guides you through creating your first `Free RTOS` application on 
 
 - Select `Operating System` as `freertos`, select `MicroBlaze` from available processor options and finish the process
 
-![Select Free RTOS](../img/figure_0081.png)
+![Select FreeRTOS](../img/figure_0081.png)
 
-<center><em>Figure 81. Select Free RTOS.</em></center><br>
+<center><em>Figure 81. Select FreeRTOS.</em></center><br>
 
 </div>
 <div class="step" data-step="6">
@@ -75,20 +75,20 @@ This exercise guides you through creating your first `Free RTOS` application on 
 
 </div>
 <div class="step" data-step="7">
-<h2>Check Free RTOS options</h2>
+<h2>Check FreeRTOS options</h2>
 
 - View settings by selecting the gear icon in the `Flow` tab or select your platform `genesys2_freertos_microblaze`/`Settings`/`vitis-comp.json`. Select `freertos microblaze`/`Board Support Package`/`freertos` and check different parameters. 
 
-![Free RTOS parameters](../img/figure_0083.png)
+![FreeRTOS parameters](../img/figure_0083.png)
 
-<center><em>Figure 83. Free RTOS parameters.</em></center><br>
+<center><em>Figure 83. FreeRTOS parameters.</em></center><br>
 
 >[!error] Some parameters have a real interest
 > - Maximum size of stack for the tasks (2048 recommended to start)
 > - Maximum number of priorities (select at least 16)
 > - Pre-emption (True for typical RTOS operation)
 > - Time-slicing (False for typical operation)
-> - If you have trouble with some inner assertions on the portability of `Free RTOS` on AMD try to select False (only if you have experienced issues) in freertos_asserts parameter
+> - If you have trouble with some inner assertions on the portability of `FreeRTOS` on AMD try to select False (only if you have experienced issues) in freertos_asserts parameter
 
 </div>
 <div class="step" data-step="8">

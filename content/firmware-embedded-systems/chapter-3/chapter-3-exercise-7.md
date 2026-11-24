@@ -41,6 +41,8 @@ typedef struct {
 ```
 Generate variables for two senders (producers) and one receiver (consumer). One sender sends number 100 at the beginning and then increments this value in each iteration. The second sender starts sending the value 200. All tasks have the same period of 1sec.
 
+The two senders produce approximately two messages per second, while the receiver processes at most one per second. The queue will eventually fill, and sends will fail until the receiver frees space.
+
 ```c
 TaskQueueParameters sender1Params = {"Sender 1",pdMS_TO_TICKS(1000), "Sender 1 is running", 100};
 TaskQueueParameters sender2Params = {"Sender 2",pdMS_TO_TICKS(1000), "Sender 2 is running", 200};
@@ -143,8 +145,7 @@ void vReceiverTask( void *pvParameters )
     {
         xil_printf("%s: %s\n", params->taskName, params->message);
 
-        /* This call should always find the queue empty because this task will
-           immediately remove any data that is written to the queue. */
+        /* Check how many messages are waiting before receiving one. */
         if( uxQueueMessagesWaiting( xQueue ) != 0 )
         {
             xil_printf( "Queue have %d messages!\r\n", uxQueueMessagesWaiting( xQueue ) );

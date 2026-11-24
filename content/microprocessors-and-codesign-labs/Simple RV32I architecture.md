@@ -10,6 +10,8 @@ tags:
 
 <div class="step active" data-step="1">
 
+This educational processor implements only a subset of the RV32I instruction set.
+
 The tentative pipeline of the presented processor is shown in the below image, take your time to understand the different components and their interconnections:
 
 ![[img/riscv_basico.png]] 
@@ -55,7 +57,7 @@ Outputs:
 
 ## ALU
 
-The ALU (Arithmetic and Logic Unit) is a functional unit dedicated to performing mathematical operations. It supports several mathematical operations in a full RV32I processor. In this specific implementation it supports the following mathematical operations between it's two input operands: `AND`, `OR`,`ADD`,`SUBSTRACT`
+The ALU (Arithmetic and Logic Unit) is a functional unit dedicated to performing mathematical operations. It supports several mathematical operations in a full RV32I processor. In this specific implementation it supports the following mathematical operations between its two input operands: `AND`, `OR`,`ADD`,`SUBTRACT`
 
 Inputs:
 - Source 1: First data source
@@ -122,15 +124,15 @@ Inputs
 
 | ALUOp | funct7 | funct3 | ALU operation |
 | ----- | ------ | ------ |-------------- |
-| 00    | xxxxxx | xxx    | ADD           |
-| 01    | xxxxxx | 000    | SUB           |
-| 10    | 000000 | 000    | ADD           |
-| 10    | 010000 | 000    | SUB           |
-| 10    | 000000 | 110    | OR            |
-| 10    | 000000 | 111    | AND           |
-| 11    | xxxxxx | 000    | ADD           |
-| 11    | xxxxxx | 110    | OR            |
-| 11    | xxxxxx | 111    | AND           |
+| 00    | xxxxxxx | xxx    | ADD           |
+| 01    | xxxxxxx | 000    | SUB           |
+| 10    | 0000000 | 000    | ADD           |
+| 10    | 0100000 | 000    | SUB           |
+| 10    | 0000000 | 110    | OR            |
+| 10    | 0000000 | 111    | AND           |
+| 11    | xxxxxxx | 000    | ADD           |
+| 11    | xxxxxxx | 110    | OR            |
+| 11    | xxxxxxx | 111    | AND           |
 
 Outputs:
 - Op: determines the ALU operation as seen in [[Simple RV32I architecture#ALU]]

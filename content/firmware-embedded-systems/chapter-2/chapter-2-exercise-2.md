@@ -76,7 +76,7 @@ XGpio Gpio_sw_led; /* The Instance of the GPIO Driver */
 Before the `while()` loop, add the initialization code:
 
 ```c
-int i;
+int i = 0;
 int Status;
 u32 SW_read;
 u32 LED_write;

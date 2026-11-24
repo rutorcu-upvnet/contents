@@ -33,4 +33,4 @@ It is a good idea to unpack the **.QAR** and open it in Quartus to check that it
 > [!danger] Do not unpack it in the original project folder
 > The project could become corrupted. Copy the **.QAR** to another folder and double-click it: Quartus will open, unpack the project into a folder called `<project_name>_restored` and open it.
 
-next > [[project1-lighting-effect|Project 1: Design of a lighting effect]]
+next > [[counter-tutorial|Project 0: Counter design tutorial]]

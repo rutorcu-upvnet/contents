@@ -6,7 +6,7 @@ tags:
   - sequential
 ---
 
-prev > [[qar-archive|Help: creating QAR files]]
+prev > [[counter-tutorial|Project 0: Counter design tutorial]]
 
 <link rel="stylesheet" href="../../static/step-navigation.css" />
 
@@ -67,7 +67,7 @@ Describe in Verilog a binary counter with the following specifications:
 
 Verify it with a simulation, using a Verilog testbench, that covers every possible combination of the inputs and checks the values of the outputs.
 
-You can start from the Verilog code of the Tutorial lab: you will have to make the counter bidirectional and generate **TC** correctly in both directions, and extend the testbench to check all its features.
+You can start from the Verilog code of the [[counter-tutorial|Tutorial lab]]: you will have to make the counter bidirectional and generate **TC** correctly in both directions, and extend the testbench to check all its features.
 
 The image shows an example simulation with the counter working in up and down modes.
 

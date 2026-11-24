@@ -273,10 +273,10 @@ Zooming in shows that only one sample is stored per count of the half-period cou
 
 During the on-board test you may notice that, while you keep your finger on the screen, the displayed coordinates are stable and roughly correct, and they change sensibly as you drag it. However, **when you lift your finger** the last displayed value changes to a coordinate unrelated to the last position (sometimes only one of the two changes). This happens because, while the screen is touched, the ADC reads the position continuously and, when released, it still makes one last reading with no finger on the screen, so the resistance changes and the coordinate is wrong.
 
-This can be fixed by adjusting two things:
+This effect can be mitigated by adjusting two things:
 
 1. **The communication speed**, which can be between 10 kbps and 2 Mbps. In the template it is set by the **ADC_DCLK_CNT** parameter, initially to about 70 kbps. Changing it can reduce the effect, although it may not be enough.
-2. **A pause between two consecutive acquisitions**, so that the ADC does not convert continuously. When the screen is touched, one communication is made and no other is started until at least a certain time has passed (for example, half a second), even if the finger stays on the screen. Fewer readings are made and the wrong ones are avoided, at the cost of slightly modifying the design to add an element that generates the wait.
+2. **A pause between two consecutive acquisitions**, so that the ADC does not convert continuously. When the screen is touched, one communication is made and no other is started until at least a certain time has passed (for example, half a second), even if the finger stays on the screen. Fewer readings may reduce the effect, although a reading taken while the finger is being lifted can still be wrong. This requires a small design change to add an element that generates the wait.
 
 <iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/diseno-de-una-comunicacion-serie/verificacion-y-mejora-del-diseno/diagrama_bloques_2024/Diagrama_bloques_mejora_bi_sin_half.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
@@ -289,7 +289,7 @@ The block diagram shows the machine's new inputs and outputs, and the next figur
 ![[../assets/diseno-de-una-comunicacion-serie/verificacion-y-mejora-del-diseno/imagen065.png]]
 
 > [!tip] Tuning the delay
-> The counter modulus can be adjusted afterwards to choose the most suitable delay for the transmission speed.
+> The counter modulus can be adjusted to choose the delay between acquisitions. At 50 MHz, the delay in seconds is the modulus divided by 50,000,000; it does not depend on the serial transmission speed.
 
 Verify the upgraded design with the provided testbench and test it on the board.
 

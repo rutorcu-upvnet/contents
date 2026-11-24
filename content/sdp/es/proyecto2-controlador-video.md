@@ -152,7 +152,7 @@ El proyecto tiene seis apartados obligatorios:
 6. Texto en pantalla.
 
 > [!note] Apartados opcionales
-> Los apartados 7 y 8 son ampliaciones opcionales. Este curso no son obligatorios ni cuentan para la nota; se incluyen para quien quiera desarrollar una aplicación completa.
+> Los apartados 7 y 8 son ampliaciones opcionales. En este curso no son obligatorios ni cuentan para la nota; se incluyen para quien quiera desarrollar una aplicación completa.
 
 ## Apartado 1: Señales de sincronismo
 
@@ -342,6 +342,8 @@ end
 ```
 
 Para comprobar el resultado usa el emulador de pantalla (**Screen Simulator**), en la barra lateral de PoliformaT. Selecciona el fichero `vga.txt`, que normalmente está en la subcarpeta **simulation/modelsim** del proyecto, y pulsa **Submit**: obtendrás la imagen resultante.
+
+También puedes utilizar el [Simulador de Visualización en Pantalla](https://personales.upv.es/rcolom/webs/screensim/index.html): carga el fichero de registro y configura las características de la pantalla siguiendo las indicaciones del simulador.
 
 ![[../assets/control-pantalla/subtarea-3/screenshot.png]]
 
@@ -537,7 +539,7 @@ Se propone una **memoria de pantalla** para el texto: la misma idea que para la 
 
 Se parte de la versión con caracteres de 16 × 16, así que caben **50 × 30 caracteres**. Hay que añadir una memoria (en verde) en la que cada posición contiene el carácter a mostrar. Para simplificar se usa **direccionamiento X-Y**: la posición horizontal va de 0 a 49 y la vertical de 0 a 29.
 
-Con direccionamiento X-Y la memoria de texto tiene **1920 palabras de 7 bits** (64 × 30). Es una ROM con el texto, así que hay que crear un fichero de inicialización **MIF** con los códigos de los caracteres en sus posiciones. Como la memoria se recorre continuamente, **todas las posiciones** deben inicializarse con el código del espacio en blanco, `0` o `7'h20`.
+Con direccionamiento X-Y la memoria de texto tiene **1920 palabras de 7 bits** (64 × 30). Es una ROM con el texto, así que hay que crear un fichero de inicialización **MIF** con los códigos de los caracteres en sus posiciones. Como la memoria se recorre continuamente, **todas las posiciones** deben inicializarse: las que no contienen texto, con el código ASCII del espacio, `7'h20`.
 
 El fichero [[../assets/control-pantalla/subtarea-5/text_rom_ejemplo.mif|text_rom_ejemplo.mif]] es un ejemplo con los nombres de dos alumnos en dos líneas; puedes usarlo como punto de partida.
 
@@ -592,11 +594,11 @@ El teclado se conecta a la FPGA con dos señales generadas por el teclado sobre 
 </div>
 
 <div class="navigation">
-  <button id="prevBtn">Previous</button>
+  <button id="prevBtn">Anterior</button>
   <div class="step-indicator">
-    <span><span id="currentStep">1</span> of <span id="totalSteps">9</span></span>
+    <span><span id="currentStep">1</span> de <span id="totalSteps">9</span></span>
   </div>
-  <button id="nextBtn">Next</button>
+  <button id="nextBtn">Siguiente</button>
 </div>
 
 </div>

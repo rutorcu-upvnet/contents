@@ -1,5 +1,5 @@
 ---
-title: "5. Software components of Petalinux"
+title: "5. Software components of PetaLinux"
 aliases: [/chapter-5-vitis-applications]
 ---
 

@@ -33,4 +33,4 @@ Conviene desempaquetar el **.QAR** y abrirlo en Quartus para comprobar que su co
 > [!danger] No lo desempaquetes en la carpeta del proyecto original
 > El proyecto podría corromperse. Copia el **.QAR** a otra carpeta y haz doble clic sobre él: Quartus se abrirá, desempaquetará el proyecto en una carpeta llamada `<nombre_proyecto>_restored` y lo abrirá.
 
-next > [[proyecto1-juego-luces|Proyecto 1: Diseño de un juego de luces]]
+next > [[tutorial-contador|Proyecto 0: Tutorial de diseño de un contador]]

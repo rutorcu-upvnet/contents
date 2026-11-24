@@ -1,5 +1,5 @@
 ---
-title: "3. Free RTOS on AMD Kintex7 FPGA"
+title: "3. FreeRTOS on AMD Kintex7 FPGA"
 aliases: [/chapter-3-freertos]
 ---
 
@@ -7,13 +7,13 @@ aliases: [/chapter-3-freertos]
 
 ---
 
-This chapter focuses on running Free RTOS on the MicroBlaze soft core. These links provide background and reference material for the exercises:
+This chapter focuses on running FreeRTOS on the MicroBlaze soft core. These links provide background and reference material for the exercises:
 
-Free RTOS (Xilinx/AMD wiki)
+FreeRTOS (Xilinx/AMD wiki)
 
 https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842141/FreeRTOS
 
-Free RTOS Documentation
+FreeRTOS Documentation
 
 https://www.freertos.org/Documentation/RTOS_book.html
 
@@ -25,7 +25,7 @@ General Xilinx FPGA Wiki
 
 https://xilinx-wiki.atlassian.net/wiki/spaces/A/overview
 
-## Exercise 1: [Creating a project with Free RTOS](chapter-3-exercise-1.md)
+## Exercise 1: [Creating a project with FreeRTOS](chapter-3-exercise-1.md)
 
 ## Exercise 2: [Creating Threads (Tasks)](chapter-3-exercise-2.md)
 

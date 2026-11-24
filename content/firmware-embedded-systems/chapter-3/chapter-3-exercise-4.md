@@ -14,7 +14,7 @@ aliases: [/chapter-3-exercise-4]
 
 > [!note] Objectives
 >
-> Control LEDs from `Free RTOS` tasks using `XGpio` drivers<br>
+> Control LEDs from `FreeRTOS` tasks using `XGpio` drivers<br>
 > Initialize peripherals safely using a startup task<br>
 > Measure task execution duration using `xTaskGetTickCount()`<br>
 
@@ -25,7 +25,7 @@ aliases: [/chapter-3-exercise-4]
 ```c
 void vTask2(void *pvParameters)
 {
-	TaskParameters *params = (TaskParameters *)pvParameters;
+	TaskParams_t *params = (TaskParams_t *)pvParameters;
 	for (;;)
 	{
 		XGpio_DiscreteWrite(&Gpio_sw_led, LED_CHANNEL, 0x00000002);
@@ -40,15 +40,15 @@ void vTask2(void *pvParameters)
 
 </div>
 <div class="step" data-step="2">
-<h2>Xilinx drivers in Free RTOS</h2>
+<h2>Xilinx drivers in FreeRTOS</h2>
 
 > [!warning] Xilinx peripheral functions may not work in `main()`
 
-> [!note] In `Free RTOS`, certain Xilinx features, especially those related to hardware and peripheral drivers (such as `XUartPs_Send`, `XGpio_DiscreteWrite`, `XScuGic_Connect`, etc.), may not work properly within `main()` due to several reasons
+> [!note] In `FreeRTOS`, certain Xilinx features, especially those related to hardware and peripheral drivers (such as `XUartPs_Send`, `XGpio_DiscreteWrite`, `XScuGic_Connect`, etc.), may not work properly within `main()` due to several reasons
 
 - There is no scheduler running, `main()` runs before the scheduler (`vTaskStartScheduler()`) starts. Some Xilinx functions may depend on interrupts or the state of the operating system to run properly. When you call these functions within `main()`, there is still no proper task context, which can cause them to fail
 - There is no task context, each task has its own stack and execution context. Some Xilinx functions may need access to context variables that are not available if called from `main()` before the scheduler starts
-- Interrupts may not be enabled, some features of Xilinx controllers require interrupts to be turned on. If you call them in `main()` before `Free RTOS` enables interrupts, they may not run correctly
+- Interrupts may not be enabled, some features of Xilinx controllers require interrupts to be turned on. If you call them in `main()` before `FreeRTOS` enables interrupts, they may not run correctly
 - System initialization conflicts, `main()` can run in a state where certain peripherals are not yet fully initialized. Instead, when used within a task, the hardware is already configured correctly
 
 </div>
@@ -69,7 +69,7 @@ void myTask(void *pvParameters) {
 }
 ```
 
-- Create a `vTaskStartUp` task, with priority `configMAX_PRIORITIES`, that initializes the GPIO peripherals and then commits suicide with `vTaskDelete(NULL)`. It will not have a loop, it only executes the initialization of the peripherals
+- Create a `vTaskStartUp` task, with priority `configMAX_PRIORITIES - 1`, that initializes the GPIO peripherals and then commits suicide with `vTaskDelete(NULL)`. It will not have a loop, it only executes the initialization of the peripherals
 - Create it before any other task
 
 > [!info] Remember to include the GPIO driver and define the channels
@@ -91,14 +91,14 @@ XGpio Gpio_sw_led; /* The Instance of the GPIO Driver */
 ```c
 void vTaskStartUp(void *pvParameters)
 {
-	TaskParameters *params = (TaskParameters *)pvParameters;
+	TaskParams_t *params = (TaskParams_t *)pvParameters;
 	xil_printf("%s: %s\n", params->taskName, params->message);
 
 	int Status;
 	Status = XGpio_Initialize(&Gpio_sw_led, XPAR_AXI_GPIO_0_BASEADDR);
 	if (Status != XST_SUCCESS) {
 		xil_printf("Gpio Initialization Failed\r\n");
-		return XST_FAILURE;
+		vTaskDelete(NULL);
 	}
 	XGpio_SetDataDirection(&Gpio_sw_led, SW_CHANNEL, 0x0000FFFF);
 	XGpio_SetDataDirection(&Gpio_sw_led, LED_CHANNEL, 0x00000000);

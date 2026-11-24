@@ -14,12 +14,12 @@ aliases: [/chapter-5-exercise-1]
 
 Before entering into coding a new application for ourselves, we will enter into the world of patching, that is, picking some code and changing it to our liking to add new features or fix nasty bugs.
 
-In Petalinux Tools, or in Yocto in general, there is the devtool concept, where the tools will download a specific source code of a software and will leave it inside the project locally so that you can change whichever part of the code you want.
+In PetaLinux Tools, or in Yocto in general, there is the devtool concept, where the tools will download a specific source code of a software and will leave it inside the project locally so that you can change whichever part of the code you want.
 Then, after the changes have been made, when issuing the `petalinux-build`, instead of pulling the source code from the repository, the local copy with your changes will be used.
 
 This is a very convenient way to test small changes done to other people's software without having to pull their repositories in a separate directory, all of this is already integrated inside Yocto.
 
-We are going to patch the bootloader of Microblaze, defined as the first piece of software that the Microblaze CPU runs when booting up the system. This bootloader is a very small piece of software that must fit into the BlockRAMs, so having as little code as possible and as optimized as possible for our use case is crucial.
+We are going to patch the bootloader of MicroBlaze, defined as the first piece of software that the MicroBlaze CPU runs when booting up the system. This bootloader is a very small piece of software that must fit into the BlockRAMs, so having as little code as possible and as optimized as possible for our use case is crucial.
 </div>
 
 <div class="step" data-step="2">
@@ -34,7 +34,7 @@ petalinux-devtool modify fs-boot
 2. The previous command will download the source code in `components/yocto/workspace/sources/fs-boot`. Go to that folder.
 3. There, you will find the source code of the first stage bootloader. The `main()` function of this bootloader is in `components/yocto/workspace/sources/fs-boot/lib/sw_apps/mba_fs_boot`. Open the file *fs-boot.c*.
 4. Make some modification, like for example adding a `printf` at the beginning of the `main()`.
-5. Now, we could build the Petalinux image and test this change, no more steps are needed. However, we are going to complete the flow now.
+5. Now, we could build the PetaLinux image and test this change, no more steps are needed. However, we are going to complete the flow now.
 </div>
 
 <div class="step" data-step="3">

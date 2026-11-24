@@ -343,6 +343,8 @@ end
 
 To check the result, use the **Screen Simulator** in the PoliformaT side bar. Select the `vga.txt` file, usually in the **simulation/modelsim** subfolder of the project, and click **Submit** to get the resulting image.
 
+You can also use the [Screen Display Simulator](https://personales.upv.es/rcolom/webs/screensim/index.html): load the log file and configure the screen characteristics following the simulator's instructions.
+
 ![[../assets/control-pantalla/subtarea-3/screenshot.png]]
 
 ### Physical verification
@@ -537,7 +539,7 @@ The proposal is a **screen memory** for the text: the same idea as for the image
 
 It starts from the version with 16 × 16 characters, so **50 × 30 characters** fit. You must add a memory (green) where each location contains the character to display. To keep it simple, use **X-Y addressing**: the horizontal position goes from 0 to 49 and the vertical one from 0 to 29.
 
-With X-Y addressing the text memory has **1920 seven-bit words** (64 × 30). It is a ROM holding the text, so you must create a **MIF** initialisation file with the character codes at their positions. Since the memory is scanned continuously, **every location** must be initialised with the blank-space code, `0` or `7'h20`.
+With X-Y addressing the text memory has **1920 seven-bit words** (64 × 30). It is a ROM holding the text, so you must create a **MIF** initialisation file with the character codes at their positions. Since the memory is scanned continuously, **every location** must be initialised: those without text should contain the ASCII space code, `7'h20`.
 
 The file [[../assets/control-pantalla/subtarea-5/text_rom_ejemplo.mif|text_rom_ejemplo.mif]] is an example with the names of two students on two lines; you can use it as a starting point.
 

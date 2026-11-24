@@ -96,6 +96,8 @@ El contador **counter** es el mismo de diseños anteriores, ahora con **módulo 
 - cuando se activa a nivel bajo **KEY_UP**, conectada al pulsador **KEY[1]**, el contador aumenta su valor en 1;
 - cuando se activa **KEY_DN**, conectada al pulsador **KEY[2]**, el contador disminuye su valor en 1.
 
+Los nombres **UP** y **DN** indican el sentido de la cuenta, no el de la velocidad. En el diseño integrado, al aumentar el valor del contador aumenta el divisor y las luces se ralentizan; al disminuirlo, se aceleran. Como la cuenta es módulo 16, en los extremos se produce el cambio contrario al pasar de 15 a 0 o de 0 a 15.
+
 Ten en cuenta que:
 
 - Los botones son **activos a nivel bajo**: la señal vale 0 cuando el botón está pulsado y 1 cuando no lo está.
@@ -159,13 +161,13 @@ Prueba también el diseño en la placa. En este caso, conecta la salida **COUNT*
 </div>
 
 <div class="navigation">
-  <button id="prevBtn">Previous</button>
+  <button id="prevBtn">Anterior</button>
   <div class="step-indicator">
-    <span><span id="currentStep">1</span> of <span id="totalSteps">4</span></span>
+    <span><span id="currentStep">1</span> de <span id="totalSteps">4</span></span>
   </div>
-  <button id="nextBtn">Next</button>
+  <button id="nextBtn">Siguiente</button>
 </div>
 
 </div>
 
-next > [[proyecto4-pantalla-tactil|Proyecto 4: Diseño de un interfaz para pantalla táctil]]
+next > [[proyecto4-pantalla-tactil|Proyecto 4: Diseño de una interfaz para pantalla táctil]]

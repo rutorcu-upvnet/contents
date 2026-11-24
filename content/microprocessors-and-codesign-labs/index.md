@@ -6,7 +6,7 @@ title: Microprocessors and codesign labs
 
 For questions mail rutorcu@upv.es or mpeiro@upv.es
 
-This is the webpage contains the laboratory sessions of the [NANO](https://nano.upv.es/) Microprocessors and Codesign itinerary. The following labs are online at the moment:
+This webpage contains the laboratory sessions of the [NANO](https://nano.upv.es/) Microprocessors and Codesign itinerary. The following labs are online at the moment:
 
 **RISC-V introduction**
 - [[RISC-V assembly programming]]

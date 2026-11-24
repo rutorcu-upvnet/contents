@@ -15,4 +15,4 @@ Prácticas de la asignatura **Sistemas Digitales Programables** (UPV). Los dise�
 - [[proyecto1-juego-luces|Proyecto 1: Diseño de un juego de luces]]
 - [[proyecto2-controlador-video|Proyecto 2: Diseño de un controlador de vídeo]]
 - [[proyecto3-luces-fsm|Proyecto 3: Diseño de un juego de luces mejorado]]
-- [[proyecto4-pantalla-tactil|Proyecto 4: Diseño de un interfaz para pantalla táctil]]
+- [[proyecto4-pantalla-tactil|Proyecto 4: Diseño de una interfaz para pantalla táctil]]

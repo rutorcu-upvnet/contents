@@ -17,7 +17,7 @@ Specific driver for a peripheral implementation, the link redirects to Xilinx (A
 
 https://github.com/Xilinx/embeddedsw/tree/master/XilinxProcessorIPLib/drivers
 
-`Free RTOS`
+`FreeRTOS`
 
 https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842141/FreeRTOS
 

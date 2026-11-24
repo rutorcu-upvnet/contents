@@ -14,7 +14,7 @@ prev > [[Simple RV32I monocycle processor]]
 <div class="step active" data-step="1">
 
 In this practice session we will implement the simple processor which we have seen in the corresponding theory session. Such processor is derived from the descriptions on the Patterson and Hennesy "Computer Organization and Design, RISC-V edition" Chapter 4.
-Such processor provides support for the complete RV32I instruction set.
+This processor targets a subset of RV32I, excluding system, synchronization and counter-access instructions.
 
 See [[Full RV32I architecture]] for the RISC‑V architecture overview.
 
@@ -22,7 +22,7 @@ See [[Full RV32I architecture]] for the RISC‑V architecture overview.
 
 <div class="step" data-step="2">
 
-## All RV32I opcodes and their meaning
+## Supported RV32I opcodes and their meaning
 As you might remember, we extensively used a RV32I opcode list in our theory sessions for codifying control signals and understanding the datapath of the processor. Below a list of the opcodes that the processor that we implement in this practice supports:
 
 
@@ -43,7 +43,7 @@ As you might remember, we extensively used a RV32I opcode list in our theory ses
 <div class="step" data-step="3">
 
 ## New Vivado project with changes
-Download the new Vivado project from Poliformat. This project includes the modified processor structure and the new control signals, but it does not implement all the multiplexors required for the processor to work in `riscv_core.sv`.
+Download the new Vivado project from PoliformaT. This project includes the modified processor structure and the new control signals, but it does not implement all the multiplexors required for the processor to work in `riscv_core.sv`.
 
 However, this Vivado project has some modules that are left to implement by the student:
 1. Imm gen. This immediate generation module should have been fully implemented in the previous practice, copy your previous code into the new module and ensure all types of immediate instructions are properly decoded.
@@ -57,7 +57,7 @@ However, this Vivado project has some modules that are left to implement by the 
 <div class="step" data-step="4">
 
 ## Designing a new Control module
-In the previous practice, we developed a control module capable of supporting some (but not all) RV32I instructions. In this lab session we will support the totality of unprivileged instructions (Excluding System, Synch and Counter access instructions)
+In the previous practice, we developed a control module capable of supporting some (but not all) RV32I instructions. In this lab session we will extend that support, excluding system, synchronization and counter-access instructions.
 
 To do so, we must modify our control unit to add this new functionality with three new signals: `branchJALR`,`LUI` and `PCALU`. We must assert `branchJALR` when a JAL or a JALR instruction is being executed. We must assert LUI when a LUI instruction is executed, and we must assert PCALU, when the input of the ALU is the PC.
 
@@ -92,7 +92,7 @@ Fill the following table with the control signals of the processor. Optionally, 
 |    *U-AUIPC*    | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="2" style="width: 60px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> |
 |      *JAL*      | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="2" style="width: 60px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> |
 
-Upload a capture of this table called Exercise1.png into the poliformat task.
+Upload a capture of this table called Exercise1.png into the PoliformaT task.
 
 </div>
 
@@ -142,7 +142,7 @@ Create a table that given the `ALUOp`, `Funct3` and `Funct7` inputs generates th
 | <input type="text" maxlength="2" style="width: 60px;" /> | <input type="text" maxlength="3" style="width: 40px;" /> | <input type="text" maxlength="7" style="width: 100px;" /> | <input type="text" style="width: 200px;" /> | <input type="text" maxlength="4"  style="width: 100px;" /> |
 | <input type="text" maxlength="2" style="width: 60px;" /> | <input type="text" maxlength="3" style="width: 40px;" /> | <input type="text" maxlength="7" style="width: 100px;" /> | <input type="text" style="width: 200px;" /> | <input type="text" maxlength="4"  style="width: 100px;" /> |
 
-Upload a capture of this table called `Exercise2.png` into the poliformat task. Optionally upload your google_docs/excel table into the task with the name Exercise2.[extension]
+Upload a capture of this table called `Exercise2.png` into the PoliformaT task. Optionally upload your google_docs/excel table into the task with the name Exercise2.[extension]
 
 </div>
 

@@ -7,7 +7,7 @@ aliases: [/chapter-5-extra-vitis-unified]
 
 AMD provides an Integrated Development Environment (IDE) for their FPGA solutions, where all the tools needed for building and debugging software are included. This software is called Vitis and, from 2023.2 onwards, Vitis Unified IDE. This latest version of Vitis is based on Visual Studio Code interface but specially made for the AMD products.
 
-In this section, you will code an application for the Microblaze CPU that you built in the previous session. The statement is as follows:
+In this section, you will code an application for the MicroBlaze CPU that you built in the previous session. The statement is as follows:
 
 > [!abstract] Application coding  
 > Code an application that takes the value of the switches through the GPIOs and puts it directly into the LEDs above the switches in the Genesys 2 board.
@@ -35,7 +35,7 @@ To code this application, please take a look into how GPIO works in Linux throug
 ![alt text](../img/Vitis_2.png)
 
 4. Write a name for your platform like `microblaze_platform`.
-5. Click Next and select the same XSA that you used for building the Petalinux project.
+5. Click Next and select the same XSA that you used for building the PetaLinux project.
 6. Click Next and select *linux* in the operating system section. Click Next and finish.
 
 ![alt text](../img/Vitis_3.png)

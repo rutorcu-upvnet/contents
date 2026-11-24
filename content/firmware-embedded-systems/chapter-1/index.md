@@ -26,7 +26,7 @@ The guide described in the following sections is based on the previous links.
 ## Objective
 The embedded system needed for the bare metal and RTOS exercises is built in this chapter. An embedded system requires minimal infrastructure consisting of a microcontroller, memory, and peripheral devices to communicate with the external world.
 
-This guide will provide a step-by-step walk-through of creating a Microblaze based hardware design using the Vivado IP Integrator for the Genesys2 FPGA board.
+This guide will provide a step-by-step walk-through of creating a MicroBlaze based hardware design using the Vivado IP Integrator for the Genesys2 FPGA board.
 
 ---
 
@@ -58,7 +58,7 @@ design information from Vivado.
 
 MicroBlaze is a soft IP core from Xilinx that implements a microprocessor entirely within the Xilinx FPGA general purpose memory and logic fabric. For this tutorial, we are going to add a MicroBlaze IP block using the Vivado IP Integrator tool.
 
-In addition to the Microblaze IP block, we would also like to make use of the DDR3 SDRAM component on the Genesys2. Therefore, a MIG (Memory Interface Generator) IP block will be added to our design.
+In addition to the MicroBlaze IP block, we would also like to make use of the DDR3 SDRAM component on the Genesys2. Therefore, a MIG (Memory Interface Generator) IP block will be added to our design.
 
 Finally, a UART (universal asynchronous receiver/transmitter) IP block will be added to communicate between the host PC and the soft processor core running on the Genesys2.
 

@@ -14,7 +14,7 @@ aliases: [/chapter-3-exercise-3]
 
 > [!note] Objectives
 >
-> Pass parameters to tasks using structs in `Free RTOS`<br>
+> Pass parameters to tasks using structs in `FreeRTOS`<br>
 > Use task handles `TaskHandle_t` to identify and control tasks<br>
 > Delete tasks at runtime using `vTaskDelete`<br>
 
@@ -27,15 +27,15 @@ typedef struct {
 	const char *taskName;
 	TickType_t delay;
 	const char *message;
-} TaskParameters;
+} TaskParams_t;
 ```
 - Define variables from the struct for each task
 
 ```c
-TaskParameters task1_parameters={"Task 1", 1000, "Task 1 is running\n"};
-TaskParameters task2_parameters={"Task 2", 1500, "Task 2 is running\n"};
-TaskParameters task3_parameters={"Task 3", 2000, "Task 3 is running\n"};
-TaskParameters task4_parameters={"Task 4", 2500, "Task 4 is running\n"};
+TaskParams_t task1_parameters={"Task 1", 1000, "Task 1 is running\n"};
+TaskParams_t task2_parameters={"Task 2", 1500, "Task 2 is running\n"};
+TaskParams_t task3_parameters={"Task 3", 2000, "Task 3 is running\n"};
+TaskParams_t task4_parameters={"Task 4", 2500, "Task 4 is running\n"};
 ```
 
 </div>
@@ -69,7 +69,7 @@ xTaskCreate(vTask4, "Task 4", STACK_SIZE, &task4_parameters, 7, &xTask4Handle);
 ```c
 void vTask1(void *pvParameters)
 {
-	TaskParameters *params = (TaskParameters *)pvParameters;
+	TaskParams_t *params = (TaskParams_t *)pvParameters;
 	for (;;)
 	{
 		xil_printf("%s: %s\n", params->taskName, params->message);

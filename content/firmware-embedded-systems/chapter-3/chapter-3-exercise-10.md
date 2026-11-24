@@ -96,19 +96,26 @@ Task parameters and prototype function for the task that will wait for the semap
 
 ```c
 void vTaskSemaphore(void *pvParameters);
-TaskParameters_t taskSemParams = {"Task Sem", pdMS_TO_TICKS(1000), "Task Sem is running"};
+TaskParams_t taskSemParams = {"Task Sem", pdMS_TO_TICKS(1000), "Task Sem is running"};
 TaskHandle_t xTaskSemHandle = NULL;
 ```
 
-- In the `vTaskStartUp` task, include the GPIO button initialization:
+- In the `vTaskStartUp` task, create the semaphore before enabling GPIO interrupts, then initialize the GPIO:
 
 ```c
+/* Create the semaphore before the interrupt handler can use it */
+xCountingSemaphore = xSemaphoreCreateCounting(SEMAPHORE_COUNT, 0);
+if (xCountingSemaphore == NULL) {
+    xil_printf("Could not create semaphore\n");
+    vTaskDelete(NULL);
+}
+
 /* gpio btn initialization */
 Status = XGpio_Initialize(&Gpio_btn, XPAR_AXI_GPIO_1_BASEADDR);
 
 if (Status != XST_SUCCESS) {
     xil_printf("Gpio Initialization Failed\r\n");
-    return XST_FAILURE;
+    vTaskDelete(NULL);
 }
 
 /* BTN are inputs, there are 5 buttons */
@@ -119,21 +126,19 @@ XGpio_InterruptGlobalEnable(&Gpio_btn);
 /* Initialize interrupts from BTN */
 ConfigPtr = XGpio_LookupConfig(XGPIO_AXI_BASEADDRESS);
 if (ConfigPtr == NULL) {
-    return XST_FAILURE;
+    xil_printf("GPIO configuration not found\r\n");
+    vTaskDelete(NULL);
 }
 Status = XSetupInterruptSystem(&Gpio_btn, &GpioHandler, ConfigPtr->IntrId, ConfigPtr->IntrParent, XINTERRUPT_DEFAULT_PRIORITY);
 if (Status != XST_SUCCESS) {
-    return XST_FAILURE;
+    xil_printf("GPIO interrupt setup failed\r\n");
+    vTaskDelete(NULL);
 }
 
 u32 Register;
 Register = XGpio_ReadReg(Gpio_btn.BaseAddress, XGPIO_IER_OFFSET);
 XGpio_WriteReg(Gpio_btn.BaseAddress, XGPIO_IER_OFFSET, Register | BTN_CHANNEL);
 XGpio_WriteReg(Gpio_btn.BaseAddress, XGPIO_GIE_OFFSET, XGPIO_GIE_GINTR_ENABLE_MASK);
-if (Status != XST_SUCCESS) {
-    return XST_FAILURE;
-}
-
 /* Enable MicroBlaze global interrupts */
 Xil_ExceptionEnable();
 
@@ -151,26 +156,17 @@ xISRTime = 0;
 
 </div>
 <div class="step" data-step="5">
-<h2>Semaphore Creation</h2>
+<h2>Semaphore Task Creation</h2>
 
-Continue the `vTaskStartUp` code with interrupt configuration and semaphore creation:
+Continue the `vTaskStartUp` code by creating the task that waits for the semaphore:
 
 ```c
-/* Initialize semaphore */
-xCountingSemaphore = xSemaphoreCreateCounting(SEMAPHORE_COUNT, 0);
-if (xCountingSemaphore != NULL)
-{
-    xTaskCreate(vTaskSemaphore, "Task 1", 1024, &taskSemParams, 1, &xTaskSemHandle);
-}
-else
-{
-    xil_printf("Could not create semaphore\n");
+if (xTaskCreate(vTaskSemaphore, "Task 1", 1024, &taskSemParams, 1, &xTaskSemHandle) != pdPASS) {
+    xil_printf("Could not create semaphore task\n");
 }
 ```
 
-> [!info] The previous code represents:
-> - Creation of Semaphore `xCountingSemaphore` with value 1. When a task or ISR takes it, the value goes to 0
-> - When released, the value returns to 1
+> [!info] The semaphore is created with an initial count of 0 and a maximum count of 1. The ISR can give it to unblock the task; taking it returns the count to 0.
 
 </div>
 <div class="step" data-step="6">
@@ -250,7 +246,7 @@ Creation of the task that waits for the semaphore.
 void vTaskSemaphore(void *pvParameters)
 {
 	u32 btn_value;
-	TaskParameters *params = (TaskParameters *)pvParameters;
+	TaskParams_t *params = (TaskParams_t *)pvParameters;
 
 	while (1)
 	{

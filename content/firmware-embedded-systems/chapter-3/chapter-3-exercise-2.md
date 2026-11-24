@@ -15,7 +15,7 @@ aliases: [/chapter-3-exercise-2]
 > [!note] Objectives
 >
 > Create a basic Application without template<br>
-> Start working with `Free RTOS`<br>
+> Start working with `FreeRTOS`<br>
 
 Select `File`/`New Component`/`Application` and name your application as
 `freertos_student_test`. Select the platform created in the previous exercise as
@@ -84,7 +84,7 @@ their operation
 
 </div>
 <div class="step" data-step="3">
-<h2>Modifying Free RTOS parameters</h2>
+<h2>Modifying FreeRTOS parameters</h2>
 
 - Modify the `Task3` and `Task4` to create continuous tasks (they should never suspend)
 - Set all tasks at the same priority and check the `configUSE_TIME_SLICING` parameter at `FreeRTOSConfig.h` file in the platform files `Sources`/`microblaze`/`freertos_microblaze`/`bsp`/`include`
@@ -93,13 +93,13 @@ their operation
 
 </div>
 <div class="step" data-step="4">
-<h2>Modifying Free RTOS parameters</h2>
+<h2>Modifying FreeRTOS parameters</h2>
 
 - Go to `Free RTOS` parameters and modify `Time Slicing` parameter to `false`. Check the `FreeRTOSConfig.h` file to see if configuration has been applied.
 
-![Free RTOS parameters](../img/figure_0085.png)
+![FreeRTOS parameters](../img/figure_0085.png)
 
-<center><em>Figure 83. Free RTOS parameters.</em></center><br>
+<center><em>Figure 83. FreeRTOS parameters.</em></center><br>
 
 >[!warning] Build and check your application
 

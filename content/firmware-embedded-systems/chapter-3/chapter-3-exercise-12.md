@@ -69,6 +69,10 @@ if (xLedTimer == NULL)
 else
 {
     xil_printf("Timer created\n");
+    if (xTimerStart(xLedTimer, 0) != pdPASS)
+    {
+        xil_printf("Could not start timer\n");
+    }
 }
 ```
 
@@ -94,7 +98,7 @@ else if (BTN_Read & BUTTON_4) {
     XGpio_DiscreteWrite(&Gpio_sw_led, LED_CHANNEL, 0); // Turn off LED
 }
 else if (BTN_Read & BUTTON_2) {
-    xTimerStartFromISR(xLedTimer, &xHigherPriorityTaskWoken);
+    xTimerChangePeriodFromISR(xLedTimer, pdMS_TO_TICKS(1000), &xHigherPriorityTaskWoken);
 }
 ```
 

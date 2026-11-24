@@ -46,7 +46,7 @@ Take the description of the [[Simple RV32I architecture#Control unit]] and defin
 | Branch      | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> | <input type="text" maxlength="1" style="width: 30px;" /> |
 | ALUOp [1:0] | <input type="text" maxlength="2" style="width: 60px;" /> | <input type="text" maxlength="2" style="width: 60px;" /> | <input type="text" maxlength="2" style="width: 60px;" /> | <input type="text" maxlength="2" style="width: 60px;" /> | <input type="text" maxlength="2" style="width: 60px;" /> |
 
-> [!warning] Fill the following table, create a snapshot of it and present it as `exercise1.png` in poliformat. If in doubt ask the professor, this step is crucial in the design of your processor.
+> [!warning] Fill the following table, create a snapshot of it and present it as `exercise1.png` in PoliformaT. If in doubt ask the professor, this step is crucial in the design of your processor.
 
 </div>
 
@@ -67,7 +67,7 @@ Take the description of the [[Simple RV32I architecture#Control unit]] and defin
 |     I-Arith     |    11     |      andi     | <input type="text" maxlength="7" style="width: 60px;" /> | <input type="text" maxlength="3" style="width: 60px;" /> | <input type="text" style="width: 60px;" /> | <input type="text" maxlength="4" style="width: 60px;" /> |
 |     I-Arith     |    11     |      ori      | <input type="text" maxlength="7" style="width: 60px;" /> | <input type="text" maxlength="3" style="width: 60px;" /> | <input type="text" style="width: 60px;" /> | <input type="text" maxlength="4" style="width: 60px;" /> |
 
-> [!warning] Fill the following table of the output ALU action from the *ALUOp*, *Funct7* and *Funct3* fields. An example of a valid ALU action is add, sub, and, or... with the corresponding ALU control output from the ALU description in [[Simple RV32I architecture#ALU]]. Create a capture of the following table with the missing fields full and attach it in poliformat in a file named `exercise2.png`
+> [!warning] Fill the following table of the output ALU action from the *ALUOp*, *Funct7* and *Funct3* fields. An example of a valid ALU action is add, sub, and, or... with the corresponding ALU control output from the ALU description in [[Simple RV32I architecture#ALU]]. Create a capture of the following table with the missing fields full and attach it in PoliformaT in a file named `exercise2.png`
 
 </div>
 
@@ -75,7 +75,7 @@ Take the description of the [[Simple RV32I architecture#Control unit]] and defin
 
 ## Exercise 3. Implementing the control module
 
-Open the Vivado project provided from poliformat. With the Vivado GUI open the Control module located in the file `control.sv` and implement the logic so that outputs are driven as described in [[Simple RV32I monocycle processor#Exercise 1. Generate the Control signals of the processor]]
+Open the Vivado project provided from PoliformaT. With the Vivado GUI open the Control module located in the file `control.sv` and implement the logic so that outputs are driven as described in [[Simple RV32I monocycle processor#Exercise 1. Generate the Control signals of the processor]]
 
 </div>
 
@@ -115,6 +115,7 @@ Validate your implementations by running the provided testbench. This testbench 
 
 ```asm
 .data
+word_size: .word 4
 initial_value: .word 1
 final_value: .space 100
 
@@ -140,7 +141,7 @@ add t1, t0, t1  #fibo2 value
 beq zero, zero, loop #While true
 ```
 
-As our processor follows the [Hardvard architecture](https://en.wikipedia.org/wiki/Harvard_architecture) , where instructions are stored in a separate memory than data they share addresses. In such a way, address 0 will refer to the first instruction **(lw a0, 0(zero))** when accessing the data memory and to the first data **(1)** when accessing the RAM. Traditional computer processors use the [von Newmann architecture](https://en.wikipedia.org/wiki/Von_Neumann_architecture) where data and instructions are stored in a single memory.
+Our processor follows the [Harvard architecture](https://en.wikipedia.org/wiki/Harvard_architecture), with separate instruction and data memories that can use the same addresses. Address 0 refers to the first instruction **(`add a0, zero, zero`)** in instruction memory and to the first data word **(4)** in RAM. The value 1 is stored at RAM address 4. In a [von Neumann architecture](https://en.wikipedia.org/wiki/Von_Neumann_architecture), instructions and data share a memory.
 
 Thus, this program accesses the first memory value by using the pseudo-immediate register *zero*, in the first load. The result of a successful execution is proven by the following values in the processor RAM:
 

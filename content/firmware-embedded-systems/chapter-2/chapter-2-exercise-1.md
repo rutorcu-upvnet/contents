@@ -108,7 +108,7 @@ Configure the platform I/O settings for console communication. Select the availa
 <div class="step" data-step="9">
 <h2>Configure Timers</h2>
 
-Configure timing services for the platform. Set up `sleep timer` for delay functions with `axi_timer_0`. Set up `tick timer` for system timing services with `axi_timer_1` (used by Free RTOS later).
+Configure timing services for the platform. Set up `sleep timer` for delay functions with `axi_timer_0`. Set up `tick timer` for system timing services with `axi_timer_1` (used by FreeRTOS later).
 
 ![Sleep timer and tick timer configuration](../img/figure_0063.png)
 

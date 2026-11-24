@@ -7,7 +7,7 @@ tags:
   - modelsim
 ---
 
-prev > [[index|Back to the index]]
+prev > [[qar-archive|Help: creating QAR files]]
 
 <link rel="stylesheet" href="../../static/step-navigation.css" />
 
@@ -28,11 +28,9 @@ The design is a modulo-10 counter. First, implement and verify the counter; then
 - Verify circuits with testbenches.
 - Synthesize and physically test a design on the FPGA.
 
-### Requirements and original document
+### Tool versions
 
 The original tutorial was written for Quartus Prime 17.1 and ModelSim-Altera. Menu names may differ in other versions.
-
-[Download the original tutorial (Spanish PDF)](../Proyecto%200%20-%20Tutorial%20_ESP_-1.pdf)
 
 </div>
 

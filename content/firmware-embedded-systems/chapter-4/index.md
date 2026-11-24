@@ -1,9 +1,9 @@
 ---
-title: "4. Microblaze Platform for Petalinux"
+title: "4. MicroBlaze Platform for PetaLinux"
 aliases: [/chapter-4-building-petalinux]
 ---
 
-In this first session we are learning on how to generate from zero (to hero) a Petalinux system using the AMD Software for FPGA development. The platform will be based on the classic Microblaze architecture with many peripherals attached to it, as we have seen in the theory sessions.
+In this first session we are learning on how to generate from zero (to hero) a PetaLinux system using the AMD Software for FPGA development. The platform will be based on the classic MicroBlaze architecture with many peripherals attached to it, as we have seen in the theory sessions.
 
 > [!danger] Deliverables  
 > At the end of this session you will have to deliver three things:  
@@ -12,6 +12,6 @@ In this first session we are learning on how to generate from zero (to hero) a P
 > - The screenshot of the address editor
 
 
-### Step 1: [Microblaze Linux-compatible system in Vivado](chapter-4-vivado-microblaze.md)
+### Step 1: [MicroBlaze Linux-compatible system in Vivado](chapter-4-vivado-microblaze.md)
 
-### Step 2: [Building Petalinux for Microblaze](chapter-4-petalinux-boot.md)
+### Step 2: [Building PetaLinux for MicroBlaze](chapter-4-petalinux-boot.md)

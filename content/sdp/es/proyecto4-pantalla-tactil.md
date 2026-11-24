@@ -1,5 +1,5 @@
 ---
-title: "Proyecto 4: Diseño de un interfaz para pantalla táctil"
+title: "Proyecto 4: Diseño de una interfaz para pantalla táctil"
 draft: false
 tags:
   - verilog
@@ -17,11 +17,11 @@ prev > [[proyecto3-luces-fsm|Proyecto 3: Diseño de un juego de luces mejorado]]
 
 ## Presentación del proyecto
 
-En este proyecto se retoma la pantalla táctil de la placa DE2-115 y se implementa la **detección de la posición de toque**. Para ello se diseña un interfaz de comunicación serie con el convertidor analógico-digital externo que lee dicha posición. Se termina con una verificación física del diseño mediante el analizador lógico integrado **SignalTap**, para comprobar que el convertidor se comporta según lo previsto.
+En este proyecto se retoma la pantalla táctil de la placa DE2-115 y se implementa la **detección de la posición de toque**. Para ello se diseña una interfaz de comunicación serie con el convertidor analógico-digital externo que lee dicha posición. Se termina con una verificación física del diseño mediante el analizador lógico integrado **SignalTap**, para comprobar que el convertidor se comporta según lo previsto.
 
 ### Objetivos
 
-- Comprender el funcionamiento de un interfaz serie.
+- Comprender el funcionamiento de una interfaz serie.
 - Diseñar interfaces de comunicación.
 - Diseñar sistemas basados en *controlpath* y *datapath*.
 - Realizar *testbenches* basados en modelos funcionales.
@@ -48,13 +48,13 @@ Se utiliza la misma pantalla táctil que en el [[proyecto2-controlador-video|Pro
 
 ![[../assets/diseno-de-una-comunicacion-serie/estructura-pantalla-tactil-ltm/imagen043.png]]
 
-La captura del punto de contacto corre a cargo de un convertidor analógico-digital (**ADC**) conectado a la pantalla, el **AD7843** de Analog Devices, de **12 bits**. El ADC obtiene las coordenadas X e Y del punto tocado, cada una con 12 bits, y dispone de un interfaz serie a través del cual se leen sus valores.
+La captura del punto de contacto corre a cargo de un convertidor analógico-digital (**ADC**) conectado a la pantalla, el **AD7843** de Analog Devices, de **12 bits**. El ADC obtiene las coordenadas X e Y del punto tocado, cada una con 12 bits, y dispone de una interfaz serie a través de la cual se leen sus valores.
 
 ![[../assets/diseno-de-una-comunicacion-serie/caracteristicas-_touch_/imagen044.png]]
 
 La conexión con la pantalla incluye dos interfaces serie: uno para la pantalla (visualización) y otro para el ADC (punto de contacto). Ambos llegan a la FPGA a través de un conector de expansión de 40 pines y, por la limitación de pines, comparten algunas señales: el mismo reloj (**ADC_DCLK**) y la misma habilitación (**SCEN**). Para que la comunicación con un dispositivo no interfiera con la del otro, la habilitación del ADC pasa por un inversor: cuando la pantalla LCD está habilitada (SCEN a nivel bajo) el ADC está deshabilitado, y viceversa.
 
-Además de estas dos líneas compartidas, el interfaz serie del ADC tiene:
+Además de estas dos líneas compartidas, la interfaz serie del ADC tiene:
 
 - **ADC_DIN**, línea de entrada de datos para enviar al ADC comandos de gestión y control;
 - **ADC_DOUT**, línea de salida de datos por la que el ADC envía en serie los 12 bits de cada coordenada;
@@ -86,11 +86,11 @@ ADC_DIN debe permanecer a nivel bajo cuando no se transmite un comando.
 
 <div class="step" data-step="3">
 
-## Apartado 1: Diseño del interfaz serie
+## Apartado 1: Diseño de la interfaz serie
 
 ![[../assets/diseno-de-una-comunicacion-serie/subtarea-1-interface-serie-del-convertidor-adc/imagen045.png]]
 
-En el primer apartado se diseña el interfaz de comunicación serie con el ADC para obtener las coordenadas X e Y del punto de contacto, ajustándose a la temporización del AD7843. El bloque tendrá una entrada de reloj para el oscilador de **50 MHz**, un reset asíncrono activo a nivel bajo, las señales de comunicación con el ADC y dos buses de salida de **12 bits**, uno por coordenada.
+En el primer apartado se diseña la interfaz de comunicación serie con el ADC para obtener las coordenadas X e Y del punto de contacto, ajustándose a la temporización del AD7843. El bloque tendrá una entrada de reloj para el oscilador de **50 MHz**, un reset asíncrono activo a nivel bajo, las señales de comunicación con el ADC y dos buses de salida de **12 bits**, uno por coordenada.
 
 Aunque el reloj es de 50 MHz, la velocidad de la comunicación debe estar entre 10 kbps y 2 Mbps. Se propone como referencia **70 kbps**.
 
@@ -167,7 +167,7 @@ Es una máquina de cuatro estados:
 
 ![[../assets/diseno-de-una-comunicacion-serie/verificacion-del-diseno/imagen061.png]]
 
-Una vez descrito el interfaz en Verilog, hay que verificarlo funcionalmente mediante simulación. Generar a bajo nivel o con un editor de estímulos las señales del convertidor no es sencillo, así que conviene plantear el test a un nivel de abstracción mayor: se usa un **modelo funcional** de la pantalla táctil que emula la comunicación del ADC, descrito en el fichero **EMULE_ADC.vo**, y un *testbench* en Verilog que lo utiliza, simulado en ModelSim.
+Una vez descrita la interfaz en Verilog, hay que verificarla funcionalmente mediante simulación. Generar a bajo nivel o con un editor de estímulos las señales del convertidor no es sencillo, así que conviene plantear el test a un nivel de abstracción mayor: se usa un **modelo funcional** de la pantalla táctil que emula la comunicación del ADC, descrito en el fichero **EMULE_ADC.vo**, y un *testbench* en Verilog que lo utiliza, simulado en ModelSim.
 
 #### Estructura del testbench
 
@@ -175,7 +175,7 @@ El entorno de verificación del proyecto de Quartus tiene la estructura de la fi
 
 - **ADC_CONTROL.v**: el diseño realizado, objeto de la verificación.
 - **EMULE_ADC.vo**: emulador (modelo funcional) de la pantalla, que simula el comportamiento del ADC.
-- **MFB.v**: modelo funcional de bus, que genera las señales básicas (reloj y reset) y proporciona el interfaz para simular una comunicación y comprobar si es correcta.
+- **MFB.v**: modelo funcional de bus, que genera las señales básicas (reloj y reset) y proporciona la interfaz para simular una comunicación y comprobar si es correcta.
 
 Como es habitual, tb_Touch_Control no tiene entradas ni salidas.
 
@@ -273,10 +273,10 @@ Al ampliar la imagen se ve que se almacena solo una muestra por cada cuenta del 
 
 Durante la prueba en placa puede observarse que, al mantener el dedo sobre la pantalla, las coordenadas mostradas son estables y aproximadamente correctas, y al arrastrarlo cambian de forma coherente. Sin embargo, **al dejar de tocar** la pantalla el último valor mostrado cambia a una coordenada que no tiene nada que ver con la última posición (a veces solo cambia una de las dos). Esto ocurre porque, mientras se toca, el ADC lee la posición de forma continua y, al soltar, aún hace una última lectura en la que el dedo ya no toca la pantalla, con lo que el valor resistivo varía y la coordenada leída es incorrecta.
 
-Este inconveniente se puede corregir ajustando dos aspectos:
+Este inconveniente se puede mitigar ajustando dos aspectos:
 
 1. **La velocidad de la comunicación**, que puede estar entre 10 kbps y 2 Mbps. En la plantilla la fija el parámetro **ADC_DCLK_CNT**, inicialmente a unos 70 kbps. Cambiándolo se puede reducir el efecto, aunque puede no bastar.
-2. **Una pausa entre dos adquisiciones consecutivas**, para que el ADC no haga conversiones continuas. Al tocar la pantalla se realiza una comunicación y no se hace otra hasta que pase al menos cierto tiempo (por ejemplo, medio segundo), aunque el dedo siga en la pantalla. Así se hacen menos lecturas y se evitan las erróneas, a cambio de modificar ligeramente el diseño para añadir un elemento que genere esa espera.
+2. **Una pausa entre dos adquisiciones consecutivas**, para que el ADC no haga conversiones continuas. Al tocar la pantalla se realiza una comunicación y no se hace otra hasta que pase al menos cierto tiempo (por ejemplo, medio segundo), aunque el dedo siga en la pantalla. Así se hacen menos lecturas y se puede reducir el efecto, aunque una lectura durante el levantamiento del dedo aún puede ser errónea. Para ello hay que modificar ligeramente el diseño y añadir un elemento que genere esa espera.
 
 <iframe src="https://rutorcu-upvnet.github.io/SDPmuise/static/animaciones/diseno-de-una-comunicacion-serie/verificacion-y-mejora-del-diseno/diagrama_bloques_2024/Diagrama_bloques_mejora_bi_sin_half.html" width="720" height="400" style="border:0;max-width:100%"></iframe>
 
@@ -289,7 +289,7 @@ El diagrama de bloques muestra las nuevas entradas y salidas de la máquina, y l
 ![[../assets/diseno-de-una-comunicacion-serie/verificacion-y-mejora-del-diseno/imagen065.png]]
 
 > [!tip] Ajuste del retardo
-> El módulo del contador puede ajustarse a posteriori para elegir el retardo más adecuado según la velocidad de transmisión.
+> El módulo del contador puede ajustarse para elegir el retardo entre adquisiciones. A 50 MHz, el retardo en segundos es el módulo dividido entre 50 000 000; no depende de la velocidad de transmisión serie.
 
 Verifica el diseño mejorado con el *testbench* proporcionado y pruébalo en la placa.
 
@@ -299,11 +299,11 @@ Verifica el diseño mejorado con el *testbench* proporcionado y pruébalo en la 
 </div>
 
 <div class="navigation">
-  <button id="prevBtn">Previous</button>
+  <button id="prevBtn">Anterior</button>
   <div class="step-indicator">
-    <span><span id="currentStep">1</span> of <span id="totalSteps">6</span></span>
+    <span><span id="currentStep">1</span> de <span id="totalSteps">6</span></span>
   </div>
-  <button id="nextBtn">Next</button>
+  <button id="nextBtn">Siguiente</button>
 </div>
 
 </div>

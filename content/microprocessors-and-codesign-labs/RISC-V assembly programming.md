@@ -39,7 +39,7 @@ Some general GNU assembler directives are essential when writing code.
 
 # The QTRVSIM simulator
 
-In this practice we will use the QtRvSim RISC-V architecture simulator. This simulator will be used in multiple practices, thus, I advice you to take your time and familiarize yourself with it.
+In this practice we will use the QtRvSim RISC-V architecture simulator. This simulator will be used in multiple practices, thus, I advise you to take your time and familiarize yourself with it.
 
 See [[The QTRVSIM simulator]] for a detailed explanation and step-by-step instructions.
 
@@ -81,9 +81,9 @@ P: .space 4
 Now that we understand this piece of code let's execute it.
 In our simulator, let's create a new program by clicking -> `File\New source` and then opening the `unknown` tab in our program.
 In this file, paste the code presented in [[RISC-V assembly programming#exercise 1 code]]. Then, open the register file and memory contents in `Windows\Registers` and `Windows\Memory`
-Run the program and check the values in registers `s0`,`s1` and `s2` and the value of the memory address of `P`. Are this values what you expected?
+Run the program and check the values in registers `s0`,`s1` and `s2` and the value of the memory address of `P`. Are these values what you expected?
 
-> [!warning] Upload your answers in a file named `exercise1.txt` to poliformat
+> [!warning] Upload your answers in a file named `exercise1.txt` to PoliformaT
 
 </div>
 
@@ -118,7 +118,7 @@ list:
 	.word 5, 2
 ```
 
-> [!warning] Write your solution into a file called `exercise2.s` and attach it in poliformat
+> [!warning] Write your solution into a file called `exercise2.s` and attach it in PoliformaT
 
 </div>
 
@@ -170,7 +170,7 @@ foo:
     ret
 ```
 
-> [!warning] Write your solution into a file called `exercise3.s` and attach it in poliformat
+> [!warning] Write your solution into a file called `exercise3.s` and attach it in PoliformaT
 
 </div>
 
@@ -178,7 +178,7 @@ foo:
 
 ## Exercise 4. [Bubble sort](https://en.wikipedia.org/wiki/Bubble_sort)
 
-Bubble sort is a sorting algorithm known for it's simplicity. It sorts an array of numbers in an ascending or descending order. 
+Bubble sort is a sorting algorithm known for its simplicity. It sorts an array of numbers in an ascending or descending order.
 
 For this exercise, we will translate the following bubble sort code into RISC-V assembly following the contents studied in the class.
 
@@ -276,7 +276,7 @@ swap_space:
 	.word 0, 1
 ```
 
-> [!warning] Write your solution into `exercise4.s` and attach it in poliformat
+> [!warning] Write your solution into `exercise4.s` and attach it in PoliformaT
 
 </div>
 
@@ -408,7 +408,7 @@ Execute the `bubsort.elf` binary in the simulator by clicking
 `File->New simulation->Elf executable (your file) -> Load machine`
 and verify that everything works correctly.
 
-> [!warning] Zip your `main.cpp`, `bubsort.s`, `crt0local.s` and `bubsort.elf` into a zip file called `exercise5.zip` and upload it to poliformat
+> [!warning] Zip your `main.cpp`, `bubsort.s`, `crt0local.s` and `bubsort.elf` into a zip file called `exercise5.zip` and upload it to PoliformaT
 
 </div>
 

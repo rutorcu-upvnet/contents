@@ -10,9 +10,9 @@ aliases: [/chapter-5-exercise-6]
 
 ## EXTRA: Add Your Software to a Production Image
 
-If you have reached this section before the session ended, congratulations! This last section is dedicated to including your source code that you made on Vitis in the previous section inside the Petalinux image, so that it is readily available to anyone that flashes your OS image (the .mcs file) without having to transfer the application afterwards through Ethernet like we did.
+If you have reached this section before the session ended, congratulations! This last section is dedicated to including your source code that you made on Vitis in the previous section inside the PetaLinux image, so that it is readily available to anyone that flashes your OS image (the .mcs file) without having to transfer the application afterwards through Ethernet like we did.
 
-Petalinux Tools is Yocto-based, meaning that it works through recipes. To add a new software component, we need to add a new recipe.
+PetaLinux Tools is Yocto-based, meaning that it works through recipes. To add a new software component, we need to add a new recipe.
 
 ## Create Recipe and Add Source Files
 

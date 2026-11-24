@@ -7,7 +7,7 @@ tags:
   - modelsim
 ---
 
-prev > [[index|Volver al índice]]
+prev > [[crear-qar|Ayuda: creación de QAR]]
 
 <link rel="stylesheet" href="../../static/step-navigation.css" />
 
@@ -28,11 +28,9 @@ El diseño es un contador módulo 10. Primero se implementa y verifica el contad
 - Verificar circuitos mediante _testbenches_.
 - Sintetizar y comprobar físicamente un diseño en la FPGA.
 
-### Requisitos y documento original
+### Versiones de las herramientas
 
 El tutorial original está escrito para Quartus Prime 17.1 y ModelSim-Altera. Los nombres de menús pueden variar en otras versiones.
-
-[Descargar el tutorial original (PDF)](../Proyecto%200%20-%20Tutorial%20_ESP_-1.pdf)
 
 </div>
 
